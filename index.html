@@ -2,172 +2,151 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <title>Reschbau Baukosten-Check – Was kostet Ihr Neubau ungefähr?</title>
-<meta name="description" content="Beantworten Sie ein paar kurze Fragen zu Ihrem Neubau und erhalten Sie Ihre grobe Preisrange sofort per WhatsApp. Kostenlos & unverbindlich." />
+<meta name="description" content="Beantworten Sie ein paar kurze Fragen zu Ihrem Neubau und erhalten Sie Ihre grobe Preisrange sofort per WhatsApp." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 <style>
-  :root {
-    --ink: #16191d; --ink-soft: #444b54; --muted: #6b7480; --line: #e6e3dd;
-    --bg: #f6f4ef; --card: #ffffff; --brand: #1c2733; --accent: #f5a623; --accent-ink: #1c1304;
-    --wa: #25d366; --radius: 16px; --shadow: 0 1px 2px rgba(16,24,40,.04), 0 12px 32px -12px rgba(16,24,40,.18);
-  }
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body { margin: 0; font-family: 'Inter', system-ui, -apple-system, sans-serif; color: var(--ink); background: var(--bg); line-height: 1.6; -webkit-font-smoothing: antialiased; }
-  h1, h2, h3 { font-family: 'Archivo', sans-serif; letter-spacing: -.02em; }
-  a { color: inherit; } img { max-width: 100%; }
-  .wrap { width: min(1120px, 92vw); margin-inline: auto; }
-  .eyebrow { display: inline-flex; align-items: center; gap: .5rem; font-size: .8rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--accent-ink); background: rgba(245,166,35,.16); padding: .35rem .7rem; border-radius: 999px; }
+  :root { --ink:#16191d; --ink-soft:#444b54; --muted:#6b7480; --line:#e6e3dd; --bg:#f6f4ef; --card:#fff; --brand:#1c2733; --accent:#f5a623; --accent-ink:#1c1304; --wa:#25d366; --radius:16px; --shadow:0 1px 2px rgba(16,24,40,.04),0 12px 32px -12px rgba(16,24,40,.18); }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+  body { margin:0; font-family:'Inter',system-ui,-apple-system,sans-serif; color:var(--ink); background:var(--bg); line-height:1.6; -webkit-font-smoothing:antialiased; }
+  body.locked { overflow:hidden; }
+  h1,h2,h3 { font-family:'Archivo',sans-serif; letter-spacing:-.02em; }
+  a { color:inherit; } img { max-width:100%; }
+  .wrap { width:min(1120px,92vw); margin-inline:auto; }
+  .eyebrow { display:inline-flex; align-items:center; gap:.5rem; font-size:.8rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--accent-ink); background:rgba(245,166,35,.16); padding:.35rem .7rem; border-radius:999px; }
+  header { position:sticky; top:0; z-index:40; background:rgba(246,244,239,.82); backdrop-filter:saturate(180%) blur(12px); border-bottom:1px solid var(--line); }
+  .nav { display:flex; align-items:center; justify-content:space-between; height:72px; }
+  .logo { display:flex; align-items:center; gap:.65rem; font-family:'Archivo'; font-weight:800; text-decoration:none; }
+  .logo .mark { width:34px; height:34px; border-radius:9px; background:var(--brand); display:grid; place-items:center; color:var(--accent); font-size:1.05rem; }
+  .logo .name { font-size:1.18rem; line-height:1; }
+  .logo .sub { display:block; font-family:'Inter'; font-weight:500; font-size:.62rem; letter-spacing:.22em; color:var(--muted); text-transform:uppercase; margin-top:3px; }
+  .nav-links { display:flex; align-items:center; gap:2rem; }
+  .nav-links a { text-decoration:none; color:var(--ink-soft); font-weight:500; font-size:.95rem; }
+  .menu-btn { display:none; background:none; border:0; padding:.4rem; cursor:pointer; }
+  .btn { display:inline-flex; align-items:center; justify-content:center; gap:.55rem; font-family:'Archivo'; font-weight:700; font-size:.98rem; min-height:48px; padding:.85rem 1.4rem; border-radius:12px; border:0; cursor:pointer; text-decoration:none; transition:transform .12s, box-shadow .12s, background .15s; white-space:nowrap; }
+  .btn:active { transform:translateY(1px); }
+  .btn-primary { background:var(--accent); color:var(--accent-ink); box-shadow:0 8px 20px -8px rgba(245,166,35,.7); }
+  .btn-primary:hover { background:#f6b13e; }
+  .btn-ghost { background:transparent; color:var(--ink); border:1px solid var(--line); }
+  .btn-ghost:hover { border-color:#cfcabf; background:#fff; }
+  .btn-lg { min-height:54px; padding:1rem 1.7rem; font-size:1.05rem; }
 
-  header { position: sticky; top: 0; z-index: 40; background: rgba(246,244,239,.82); backdrop-filter: saturate(180%) blur(12px); border-bottom: 1px solid var(--line); }
-  .nav { display: flex; align-items: center; justify-content: space-between; height: 72px; }
-  .logo { display: flex; align-items: center; gap: .65rem; font-family: 'Archivo'; font-weight: 800; text-decoration: none; }
-  .logo .mark { width: 34px; height: 34px; border-radius: 9px; background: var(--brand); display: grid; place-items: center; color: var(--accent); font-size: 1.05rem; }
-  .logo .name { font-size: 1.18rem; line-height: 1; }
-  .logo .sub { display:block; font-family:'Inter'; font-weight:500; font-size:.62rem; letter-spacing:.22em; color: var(--muted); text-transform: uppercase; margin-top: 3px; }
-  .nav-links { display: flex; align-items: center; gap: 2rem; }
-  .nav-links a { text-decoration: none; color: var(--ink-soft); font-weight: 500; font-size: .95rem; }
-  .nav-links a:hover { color: var(--ink); }
-  .menu-btn { display: none; background: none; border: 0; padding: .4rem; cursor: pointer; }
+  .hero { padding:clamp(2.4rem,7vw,6rem) 0 clamp(2.4rem,5vw,4rem); }
+  .hero-grid { display:grid; grid-template-columns:1.05fr .95fr; gap:clamp(1.6rem,5vw,4rem); align-items:center; }
+  .hero h1 { font-size:clamp(2rem,7vw,4rem); line-height:1.05; font-weight:800; margin:1rem 0 1rem; }
+  .hero p.lead { font-size:clamp(1.05rem,3.6vw,1.18rem); color:var(--ink-soft); max-width:40ch; margin:0 0 1.6rem; }
+  .hero-cta { display:flex; flex-wrap:wrap; gap:.7rem; margin-bottom:1.6rem; }
+  .trust { display:flex; flex-wrap:wrap; gap:.9rem 1.4rem; color:var(--muted); font-size:.9rem; }
+  .trust span { display:inline-flex; align-items:center; gap:.45rem; }
+  .trust svg { color:var(--accent-ink); }
+  .hero-card { background:var(--brand); color:#fff; border-radius:22px; padding:1.5rem; box-shadow:var(--shadow); position:relative; overflow:hidden; }
+  .hero-card::before { content:""; position:absolute; inset:0; background:radial-gradient(120% 80% at 100% 0%, rgba(245,166,35,.22), transparent 55%), repeating-linear-gradient(135deg, rgba(255,255,255,.04) 0 14px, transparent 14px 28px); pointer-events:none; }
+  .hc-top { display:flex; align-items:center; justify-content:space-between; position:relative; }
+  .hc-badge { display:inline-flex; align-items:center; gap:.5rem; background:rgba(255,255,255,.1); padding:.4rem .75rem; border-radius:999px; font-size:.78rem; font-weight:600; }
+  .hc-wa { display:inline-flex; align-items:center; gap:.45rem; color:var(--wa); font-weight:700; font-size:.88rem; }
+  .chat { position:relative; margin-top:1.3rem; display:grid; gap:.6rem; }
+  .bubble { background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.08); padding:.8rem 1rem; border-radius:14px; font-size:.92rem; max-width:88%; }
+  .bubble.them { border-bottom-left-radius:4px; }
+  .bubble.us { background:var(--wa); color:#06280f; margin-left:auto; border-bottom-right-radius:4px; font-weight:600; }
+  .bubble .price { font-family:'Archivo'; font-weight:800; font-size:1.2rem; display:block; margin-top:.15rem; }
+  .hc-foot { position:relative; margin-top:1.2rem; font-size:.78rem; color:rgba(255,255,255,.6); }
 
-  .btn { display: inline-flex; align-items: center; justify-content: center; gap: .55rem; font-family: 'Archivo'; font-weight: 700; font-size: .98rem; padding: .85rem 1.4rem; border-radius: 12px; border: 0; cursor: pointer; text-decoration: none; transition: transform .12s ease, box-shadow .12s ease, background .15s; white-space: nowrap; }
-  .btn:active { transform: translateY(1px); }
-  .btn-primary { background: var(--accent); color: var(--accent-ink); box-shadow: 0 8px 20px -8px rgba(245,166,35,.7); }
-  .btn-primary:hover { background: #f6b13e; }
-  .btn-ghost { background: transparent; color: var(--ink); border: 1px solid var(--line); }
-  .btn-ghost:hover { border-color: #cfcabf; background: #fff; }
-  .btn-lg { padding: 1.05rem 1.7rem; font-size: 1.05rem; }
+  section { padding:clamp(2.6rem,6vw,5.5rem) 0; }
+  .sec-head { max-width:56ch; margin-bottom:2.2rem; }
+  .sec-head.center { margin-inline:auto; text-align:center; }
+  .sec-head h2 { font-size:clamp(1.6rem,5.5vw,2.6rem); line-height:1.1; margin:.9rem 0 .6rem; font-weight:800; }
+  .sec-head p { color:var(--ink-soft); font-size:clamp(1rem,3.6vw,1.1rem); margin:0; }
+  .steps { display:grid; grid-template-columns:repeat(3,1fr); gap:1.2rem; }
+  .step { background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:1.7rem 1.5rem; box-shadow:var(--shadow); position:relative; }
+  .step .num { width:46px; height:46px; border-radius:12px; background:var(--brand); color:var(--accent); font-family:'Archivo'; font-weight:800; font-size:1.25rem; display:grid; place-items:center; margin-bottom:1rem; }
+  .step h3 { font-size:1.18rem; margin:0 0 .5rem; }
+  .step p { color:var(--ink-soft); margin:0; font-size:.98rem; }
+  .step .icon { position:absolute; top:1.6rem; right:1.4rem; color:#cfcabf; }
+  .cta-center { text-align:center; }
+  .faq { max-width:760px; margin-inline:auto; }
+  .qa { border-bottom:1px solid var(--line); }
+  .qa > button { width:100%; text-align:left; background:none; border:0; cursor:pointer; padding:1.25rem 0; display:flex; align-items:center; justify-content:space-between; gap:1rem; font-family:'Archivo'; font-weight:700; font-size:clamp(1.05rem,4vw,1.12rem); color:var(--ink); }
+  .qa .plus { flex:none; width:26px; height:26px; position:relative; }
+  .qa .plus::before, .qa .plus::after { content:""; position:absolute; background:var(--accent-ink); border-radius:2px; }
+  .qa .plus::before { top:12px; left:4px; right:4px; height:2px; }
+  .qa .plus::after { left:12px; top:4px; bottom:4px; width:2px; transition:transform .2s, opacity .2s; }
+  .qa.open .plus::after { transform:rotate(90deg); opacity:0; }
+  .qa .ans { max-height:0; overflow:hidden; transition:max-height .25s ease; }
+  .qa .ans p { margin:0 0 1.3rem; color:var(--ink-soft); font-size:1.02rem; }
+  .qa.open .ans { max-height:240px; }
+  .band { background:var(--brand); color:#fff; border-radius:26px; padding:clamp(2rem,5vw,4rem); text-align:center; position:relative; overflow:hidden; box-shadow:var(--shadow); }
+  .band::before { content:""; position:absolute; inset:0; background:radial-gradient(90% 120% at 50% -20%, rgba(245,166,35,.28), transparent 60%); }
+  .band > * { position:relative; }
+  .band h2 { font-size:clamp(1.6rem,5vw,2.8rem); margin:0 0 .8rem; font-weight:800; }
+  .band p { color:rgba(255,255,255,.78); font-size:clamp(1rem,3.6vw,1.15rem); margin:0 auto 1.6rem; max-width:46ch; }
+  footer { padding:2.6rem 0 2.4rem; border-top:1px solid var(--line); margin-top:1rem; }
+  .foot { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:1rem; color:var(--muted); font-size:.9rem; }
+  .foot a { color:var(--muted); } .foot-links { display:flex; gap:1.4rem; flex-wrap:wrap; }
 
-  .hero { padding: clamp(3rem, 7vw, 6rem) 0 clamp(2.5rem, 5vw, 4rem); }
-  .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; }
-  .hero h1 { font-size: clamp(2.4rem, 5.4vw, 4rem); line-height: 1.04; font-weight: 800; margin: 1.2rem 0 1.1rem; }
-  .hero p.lead { font-size: 1.18rem; color: var(--ink-soft); max-width: 40ch; margin: 0 0 1.8rem; }
-  .hero-cta { display: flex; flex-wrap: wrap; gap: .8rem; margin-bottom: 1.8rem; }
-  .trust { display: flex; flex-wrap: wrap; gap: 1.2rem 1.6rem; color: var(--muted); font-size: .92rem; }
-  .trust span { display: inline-flex; align-items: center; gap: .45rem; }
-  .trust svg { color: var(--accent-ink); }
-
-  .hero-card { background: var(--brand); color: #fff; border-radius: 22px; padding: 1.6rem; box-shadow: var(--shadow); position: relative; overflow: hidden; }
-  .hero-card::before { content: ""; position: absolute; inset: 0; background: radial-gradient(120% 80% at 100% 0%, rgba(245,166,35,.22), transparent 55%), repeating-linear-gradient(135deg, rgba(255,255,255,.04) 0 14px, transparent 14px 28px); pointer-events: none; }
-  .hc-top { display: flex; align-items: center; justify-content: space-between; position: relative; }
-  .hc-badge { display:inline-flex; align-items:center; gap:.5rem; background: rgba(255,255,255,.1); padding:.4rem .75rem; border-radius:999px; font-size:.82rem; font-weight:600; }
-  .hc-wa { display:inline-flex; align-items:center; gap:.45rem; color: var(--wa); font-weight:700; font-size:.9rem; }
-  .chat { position: relative; margin-top: 1.4rem; display: grid; gap: .7rem; }
-  .bubble { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.08); padding: .85rem 1rem; border-radius: 14px; font-size: .95rem; max-width: 86%; }
-  .bubble.them { border-bottom-left-radius: 4px; }
-  .bubble.us { background: var(--wa); color: #06280f; margin-left: auto; border-bottom-right-radius: 4px; font-weight: 600; }
-  .bubble .price { font-family: 'Archivo'; font-weight: 800; font-size: 1.25rem; display: block; margin-top: .15rem; }
-  .hc-foot { position: relative; margin-top: 1.3rem; font-size: .8rem; color: rgba(255,255,255,.6); }
-
-  section { padding: clamp(3rem, 6vw, 5.5rem) 0; }
-  .sec-head { max-width: 56ch; margin-bottom: 2.6rem; }
-  .sec-head.center { margin-inline: auto; text-align: center; }
-  .sec-head h2 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); line-height: 1.1; margin: .9rem 0 .6rem; font-weight: 800; }
-  .sec-head p { color: var(--ink-soft); font-size: 1.1rem; margin: 0; }
-
-  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
-  .step { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.8rem 1.6rem; box-shadow: var(--shadow); position: relative; }
-  .step .num { width: 46px; height: 46px; border-radius: 12px; background: var(--brand); color: var(--accent); font-family: 'Archivo'; font-weight: 800; font-size: 1.25rem; display: grid; place-items: center; margin-bottom: 1.1rem; }
-  .step h3 { font-size: 1.2rem; margin: 0 0 .5rem; }
-  .step p { color: var(--ink-soft); margin: 0; font-size: .98rem; }
-  .step .icon { position: absolute; top: 1.7rem; right: 1.5rem; color: #cfcabf; }
-
-  .cta-center { text-align: center; }
-
-  .faq { max-width: 760px; margin-inline: auto; }
-  .qa { border-bottom: 1px solid var(--line); }
-  .qa button { width: 100%; text-align: left; background: none; border: 0; cursor: pointer; padding: 1.35rem 0; display: flex; align-items: center; justify-content: space-between; gap: 1rem; font-family: 'Archivo'; font-weight: 700; font-size: 1.12rem; color: var(--ink); }
-  .qa .plus { flex: none; width: 26px; height: 26px; position: relative; transition: transform .2s; }
-  .qa .plus::before, .qa .plus::after { content:""; position:absolute; background: var(--accent-ink); border-radius: 2px; }
-  .qa .plus::before { top: 12px; left: 4px; right: 4px; height: 2px; }
-  .qa .plus::after { left: 12px; top: 4px; bottom: 4px; width: 2px; transition: transform .2s, opacity .2s; }
-  .qa[open] .plus::after { transform: rotate(90deg); opacity: 0; }
-  .qa .ans { max-height: 0; overflow: hidden; transition: max-height .25s ease; }
-  .qa .ans p { margin: 0 0 1.35rem; color: var(--ink-soft); font-size: 1.02rem; }
-  .qa[open] .ans { max-height: 240px; }
-
-  .band { background: var(--brand); color: #fff; border-radius: 26px; padding: clamp(2.4rem, 5vw, 4rem); text-align: center; position: relative; overflow: hidden; box-shadow: var(--shadow); }
-  .band::before { content:""; position:absolute; inset:0; background: radial-gradient(90% 120% at 50% -20%, rgba(245,166,35,.28), transparent 60%); }
-  .band > * { position: relative; }
-  .band h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); margin: 0 0 .8rem; font-weight: 800; }
-  .band p { color: rgba(255,255,255,.78); font-size: 1.15rem; margin: 0 auto 1.8rem; max-width: 46ch; }
-
-  footer { padding: 3rem 0 2.5rem; border-top: 1px solid var(--line); margin-top: 1rem; }
-  .foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.2rem; color: var(--muted); font-size: .92rem; }
-  .foot a { color: var(--muted); text-decoration: none; }
-  .foot a:hover { color: var(--ink); }
-  .foot-links { display: flex; gap: 1.4rem; flex-wrap: wrap; }
-
-  /* ---------- Modal funnel ---------- */
-  .modal { position: fixed; inset: 0; z-index: 100; display: none; }
-  .modal.open { display: block; }
-  .modal-bg { position: absolute; inset: 0; background: rgba(16,20,26,.55); backdrop-filter: blur(3px); }
-  .modal-panel { position: relative; background: var(--bg); width: min(620px, 94vw); margin: clamp(1rem,4vh,3rem) auto; border-radius: 20px; box-shadow: 0 30px 80px -20px rgba(0,0,0,.5); overflow: hidden; max-height: 92vh; display: flex; flex-direction: column; }
-  .modal-head { padding: 1.4rem 1.6rem 1rem; border-bottom: 1px solid var(--line); }
-  .modal-head .bar { height: 6px; background: var(--line); border-radius: 999px; overflow: hidden; margin-bottom: 1rem; }
-  .modal-head .bar i { display: block; height: 100%; background: var(--accent); width: 6%; transition: width .3s; border-radius: 999px; }
-  .modal-head .row { display: flex; align-items: center; justify-content: space-between; }
-  .modal-head .step-label { font-size: .82rem; font-weight: 600; color: var(--muted); letter-spacing: .04em; }
-  .modal-close { background: none; border: 0; font-size: 1.5rem; line-height: 1; cursor: pointer; color: var(--muted); padding: .2rem .4rem; }
-  .modal-body { padding: 1.6rem; overflow-y: auto; }
-  .modal-body.shake { animation: shake .3s; }
+  /* Modal funnel */
+  .modal { position:fixed; inset:0; z-index:100; display:none; }
+  .modal.open { display:block; }
+  .modal-bg { position:absolute; inset:0; background:rgba(16,20,26,.55); backdrop-filter:blur(3px); }
+  .modal-panel { position:relative; background:var(--bg); width:min(620px,96vw); margin:clamp(.5rem,3vh,2.5rem) auto; border-radius:18px; box-shadow:0 30px 80px -20px rgba(0,0,0,.5); overflow:hidden; max-height:94vh; display:flex; flex-direction:column; }
+  .modal-head { padding:1.1rem 1.4rem .9rem; border-bottom:1px solid var(--line); }
+  .modal-head .bar { height:6px; background:var(--line); border-radius:999px; overflow:hidden; margin-bottom:.7rem; }
+  .modal-head .bar i { display:block; height:100%; background:var(--accent); width:6%; transition:width .3s; border-radius:999px; }
+  .modal-head .row { display:flex; align-items:center; justify-content:space-between; }
+  .modal-head .step-label { font-size:.78rem; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:.03em; }
+  .modal-close { background:none; border:0; font-size:1.6rem; line-height:1; cursor:pointer; color:var(--muted); padding:.2rem .5rem; }
+  .modal-body { padding:1.4rem; overflow-y:auto; -webkit-overflow-scrolling:touch; }
+  .modal-body.shake { animation:shake .3s; }
   @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-6px)} 75%{transform:translateX(6px)} }
-  .qtitle { font-size: 1.3rem; margin: 0 0 .3rem; font-family: 'Archivo'; font-weight: 800; }
-  .qhint { color: var(--muted); margin: 0 0 1.1rem; font-size: .95rem; }
+  .modal-foot { padding:.9rem 1.4rem 1.2rem; border-top:1px solid var(--line); display:flex; gap:.7rem; }
+  .modal-foot .btn { flex:1; }
+  .qtitle { font-size:clamp(1.2rem,5vw,1.4rem); margin:0 0 .25rem; font-family:'Archivo'; font-weight:800; line-height:1.2; }
+  .qhint { color:var(--muted); margin:0 0 1.1rem; font-size:.92rem; }
+  .qcard-grid { display:grid; gap:.6rem; grid-template-columns:1fr 1fr; }
+  .qcard { position:relative; display:flex; flex-direction:column; align-items:center; gap:.4rem; text-align:center; padding:.8rem .65rem; border:2px solid var(--line); border-radius:14px; background:#fff; cursor:pointer; transition:border-color .12s, transform .1s; font:inherit; color:inherit; }
+  .qcard:active { transform:scale(.99); }
+  @media (hover:hover){ .qcard:hover { border-color:var(--accent); } }
+  .qcard.sel { border-color:var(--accent); background:rgba(245,166,35,.08); }
+  .qcard .media { width:100%; aspect-ratio:3/2; border-radius:10px; display:grid; place-items:center; background:rgba(245,166,35,.1); overflow:hidden; }
+  .qcard .media img { width:100%; height:100%; object-fit:cover; }
+  .qcard .media .emoji { font-size:2.1rem; }
+  .qcard .lab { font-weight:700; font-family:'Archivo'; font-size:.95rem; line-height:1.2; }
+  .qcard .sub { font-size:.76rem; color:var(--muted); line-height:1.2; }
+  .qcard .check { position:absolute; top:.45rem; right:.45rem; width:22px; height:22px; border-radius:50%; background:var(--accent); color:var(--accent-ink); display:none; align-items:center; justify-content:center; font-weight:800; font-size:.78rem; }
+  .qcard.sel .check { display:flex; }
+  .qlist { display:grid; gap:.5rem; }
+  .qopt { display:flex; align-items:center; gap:.7rem; min-height:52px; padding:.75rem 1rem; border:1.5px solid var(--line); border-radius:12px; background:#fff; cursor:pointer; font-weight:500; text-align:left; font:inherit; color:var(--ink); transition:border-color .12s, background .12s; }
+  @media (hover:hover){ .qopt:hover { border-color:#cfcabf; } }
+  .qopt.sel { border-color:var(--accent); background:rgba(245,166,35,.08); }
+  .qopt .tick { width:20px; height:20px; border-radius:50%; border:2px solid var(--line); flex:none; display:grid; place-items:center; font-size:.7rem; color:var(--accent-ink); }
+  .qopt.sel .tick { border-color:var(--accent); background:var(--accent); }
+  .qsub { margin-top:1.1rem; padding-top:1rem; border-top:1px solid var(--line); }
+  .qsublabel { font-weight:800; font-family:'Archivo'; color:var(--ink); font-size:1rem; margin-bottom:.55rem; }
+  .qnote { margin-top:.7rem; background:#fff8e1; border:1px solid #f1d98a; border-radius:10px; padding:.7rem .9rem; font-size:.9rem; color:#6a5311; }
+  .qextra, .qfile { margin-top:.8rem; }
+  .qextra label, .qfile label { display:block; font-size:.82rem; color:var(--muted); margin-bottom:.35rem; }
+  .qextra input, .qfile input, .field input { width:100%; font:inherit; padding:.8rem .9rem; border:1.5px solid var(--line); border-radius:12px; background:#fff; }
+  .qextra input:focus, .qfile input:focus, .field input:focus { outline:2px solid rgba(245,166,35,.5); border-color:var(--accent); }
+  .field { display:grid; gap:.4rem; margin-bottom:1rem; }
+  .field label { font-weight:600; font-size:.9rem; }
+  .result { text-align:center; background:var(--brand); color:#fff; border-radius:14px; padding:1.4rem 1rem; margin-bottom:1.2rem; position:relative; overflow:hidden; }
+  .result::before { content:""; position:absolute; inset:0; background:radial-gradient(90% 120% at 50% -10%, rgba(245,166,35,.3), transparent 60%); }
+  .result > * { position:relative; }
+  .result .reb { font-size:.76rem; text-transform:uppercase; letter-spacing:.18em; color:var(--accent); font-weight:700; }
+  .result .range { font-family:'Archivo'; font-weight:800; font-size:clamp(1.6rem,7vw,2.2rem); margin:.35rem 0; }
+  .result .rnote { font-size:.8rem; color:rgba(255,255,255,.7); }
+  .summary { background:#fff; border:1px solid var(--line); border-radius:12px; padding:.8rem 1rem; margin-bottom:1.2rem; }
+  .summary div { display:flex; justify-content:space-between; gap:1rem; padding:.3rem 0; font-size:.88rem; border-bottom:1px dashed var(--line); }
+  .summary div:last-child { border-bottom:0; }
+  .summary span:first-child { color:var(--muted); } .summary span:last-child { font-weight:600; text-align:right; }
+  .wa-note { display:flex; gap:.6rem; align-items:flex-start; background:rgba(37,211,102,.1); border:1px solid rgba(37,211,102,.3); border-radius:12px; padding:.9rem 1rem; font-size:.88rem; color:#0c3d1c; }
 
-  .qcard-grid { display: grid; gap: .7rem; }
-  .qcard-grid.c2 { grid-template-columns: 1fr 1fr; }
-  .qcard-grid.c3 { grid-template-columns: 1fr 1fr 1fr; }
-  @media (max-width: 560px) { .qcard-grid.c2, .qcard-grid.c3 { grid-template-columns: 1fr 1fr; } }
-  @media (max-width: 380px) { .qcard-grid.c2, .qcard-grid.c3 { grid-template-columns: 1fr; } }
-  .qcard { position: relative; display: flex; flex-direction: column; align-items: center; gap: .45rem; text-align: center; padding: .85rem .7rem; border: 2px solid var(--line); border-radius: 14px; background: #fff; cursor: pointer; transition: border-color .12s, box-shadow .12s, transform .1s; font: inherit; color: inherit; }
-  .qcard:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: var(--shadow); }
-  .qcard.sel { border-color: var(--accent); background: rgba(245,166,35,.08); }
-  .qcard .media { width: 100%; aspect-ratio: 3 / 2; border-radius: 10px; display: grid; place-items: center; background: rgba(245,166,35,.1); overflow: hidden; }
-  .qcard .media img { width: 100%; height: 100%; object-fit: cover; }
-  .qcard .media .emoji { font-size: 2.3rem; line-height: 1; }
-  .qcard .lab { font-weight: 700; font-family: 'Archivo'; font-size: .98rem; }
-  .qcard .sub { font-size: .78rem; color: var(--muted); line-height: 1.25; }
-  .qcard .check { position: absolute; top: .5rem; right: .5rem; width: 24px; height: 24px; border-radius: 50%; background: var(--accent); color: var(--accent-ink); display: none; align-items: center; justify-content: center; font-weight: 800; font-size: .8rem; }
-  .qcard.sel .check { display: flex; }
-
-  .qlist { display: grid; gap: .55rem; }
-  .qopt { display: flex; align-items: center; gap: .8rem; padding: .95rem 1.1rem; border: 1.5px solid var(--line); border-radius: 12px; background: #fff; cursor: pointer; font-weight: 600; text-align: left; font: inherit; color: inherit; transition: border-color .12s, background .12s; }
-  .qopt:hover { border-color: #cfcabf; }
-  .qopt.sel { border-color: var(--accent); background: rgba(245,166,35,.08); }
-  .qopt .tick { width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(--line); flex: none; display: grid; place-items: center; font-size: .7rem; color: var(--accent-ink); }
-  .qopt.sel .tick { border-color: var(--accent); background: var(--accent); }
-  .qextra { margin-top: .8rem; }
-  .qextra input { width: 100%; font: inherit; padding: .8rem 1rem; border: 1.5px solid var(--line); border-radius: 12px; background: #fff; }
-  .qextra input:focus { outline: 2px solid rgba(245,166,35,.5); border-color: var(--accent); }
-
-  .result { text-align: center; background: var(--brand); color: #fff; border-radius: 16px; padding: 1.4rem 1rem; margin-bottom: 1.2rem; position: relative; overflow: hidden; }
-  .result::before { content:""; position:absolute; inset:0; background: radial-gradient(90% 120% at 50% -10%, rgba(245,166,35,.3), transparent 60%); }
-  .result > * { position: relative; }
-  .result .reb { font-size: .78rem; text-transform: uppercase; letter-spacing: .18em; color: var(--accent); font-weight: 700; }
-  .result .range { font-family: 'Archivo'; font-weight: 800; font-size: clamp(1.7rem, 5vw, 2.3rem); margin: .35rem 0; }
-  .result .rnote { font-size: .82rem; color: rgba(255,255,255,.7); }
-
-  .field { display: grid; gap: .4rem; margin-bottom: 1rem; }
-  .field label { font-weight: 600; font-size: .9rem; }
-  .field input, .field textarea { font: inherit; padding: .85rem 1rem; border: 1.5px solid var(--line); border-radius: 12px; background: #fff; width: 100%; }
-  .field input:focus, .field textarea:focus { outline: 2px solid rgba(245,166,35,.5); border-color: var(--accent); }
-  .summary { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: .8rem 1.1rem; margin-bottom: 1.2rem; }
-  .summary div { display: flex; justify-content: space-between; gap: 1rem; padding: .3rem 0; font-size: .9rem; border-bottom: 1px dashed var(--line); }
-  .summary div:last-child { border-bottom: 0; }
-  .summary span:first-child { color: var(--muted); }
-  .summary span:last-child { font-weight: 600; text-align: right; }
-  .wa-note { display: flex; gap: .6rem; align-items: flex-start; background: rgba(37,211,102,.1); border: 1px solid rgba(37,211,102,.3); border-radius: 12px; padding: .9rem 1rem; font-size: .88rem; color: #0c3d1c; }
-  .modal-foot { padding: 1rem 1.6rem 1.4rem; border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: .8rem; }
-
-  @media (max-width: 880px) {
-    .hero-grid { grid-template-columns: 1fr; } .hero-card { order: -1; } .steps { grid-template-columns: 1fr; }
-    .nav-links { display: none; } .menu-btn { display: block; }
-    .nav-links.show { display: flex; position: absolute; top: 72px; left: 0; right: 0; flex-direction: column; background: var(--bg); padding: 1.2rem 5vw 1.6rem; gap: 1.1rem; border-bottom: 1px solid var(--line); align-items: flex-start; }
-  }
+  @media (max-width:880px){ .hero-grid{ grid-template-columns:1fr; } .hero-card{ order:-1; } .steps{ grid-template-columns:1fr; } .nav-links{ display:none; } .menu-btn{ display:block; }
+    .nav-links.show { display:flex; position:absolute; top:72px; left:0; right:0; flex-direction:column; background:var(--bg); padding:1.2rem 5vw 1.6rem; gap:1.1rem; border-bottom:1px solid var(--line); align-items:flex-start; } }
+  @media (max-width:360px){ .qcard-grid{ grid-template-columns:1fr; } }
 </style>
 </head>
 <body>
@@ -213,9 +192,7 @@
       <div class="chat">
         <div class="bubble them">Neubau Einfamilienhaus, ca. 140 m², Massivbau, NÖ.</div>
         <div class="bubble them">Mit Vollkeller und Satteldach 🏠</div>
-        <div class="bubble us">Ihre grobe Baukosten-Range:
-          <span class="price">€ 695.000 – 831.000</span>
-          Gerne besprechen wir die Details telefonisch.</div>
+        <div class="bubble us">Ihre grobe Baukosten-Range:<span class="price">€ 695.000 – 830.000</span>Gerne besprechen wir die Details telefonisch.</div>
       </div>
       <div class="hc-foot">Beispielhafte Darstellung · echte Range basiert auf Ihren Angaben</div>
     </div>
@@ -224,71 +201,37 @@
 
 <section id="ablauf">
   <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">Ablauf</span>
-      <h2>So funktioniert der Baukosten-Check</h2>
-      <p>In drei Schritten zu Ihrer ersten Einschätzung.</p>
-    </div>
+    <div class="sec-head"><span class="eyebrow">Ablauf</span><h2>So funktioniert der Baukosten-Check</h2><p>In drei Schritten zu Ihrer ersten Einschätzung.</p></div>
     <div class="steps">
-      <div class="step">
-        <div class="num">1</div>
-        <svg class="icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
-        <h3>Angaben ausfüllen</h3>
-        <p>Beantworten Sie ein paar kurze Fragen zu Ihrem Neubau – in 1–2 Minuten.</p>
-      </div>
-      <div class="step">
-        <div class="num">2</div>
-        <svg class="icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/></svg>
-        <h3>Range sofort per WhatsApp</h3>
-        <p>Ihre grobe Preisrange wird automatisch berechnet und kommt direkt per WhatsApp.</p>
-      </div>
-      <div class="step">
-        <div class="num">3</div>
-        <svg class="icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L8 9.6a16 16 0 0 0 6 6l1.1-1.1a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.7 2Z"/></svg>
-        <h3>Persönliches Planungsgespräch</h3>
-        <p>Für die genaue Planung und Detailfragen melden wir uns telefonisch bei Ihnen.</p>
-      </div>
+      <div class="step"><div class="num">1</div><svg class="icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg><h3>Angaben ausfüllen</h3><p>Beantworten Sie ein paar kurze Fragen zu Ihrem Neubau – in 1–2 Minuten.</p></div>
+      <div class="step"><div class="num">2</div><svg class="icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/></svg><h3>Range sofort per WhatsApp</h3><p>Ihre grobe Preisrange wird automatisch berechnet und kommt direkt per WhatsApp.</p></div>
+      <div class="step"><div class="num">3</div><svg class="icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L8 9.6a16 16 0 0 0 6 6l1.1-1.1a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.7 2Z"/></svg><h3>Persönliches Planungsgespräch</h3><p>Für die genaue Planung und Detailfragen melden wir uns telefonisch bei Ihnen.</p></div>
     </div>
   </div>
 </section>
 
 <section id="projekt-check">
   <div class="wrap">
-    <div class="sec-head center">
-      <span class="eyebrow">Baukosten-Check</span>
-      <h2>Berechnen Sie Ihre Baukosten</h2>
-      <p>Ein paar kurze Fragen zu Ihrem Neubau – die grobe Preisrange kommt sofort per WhatsApp.</p>
-    </div>
+    <div class="sec-head center"><span class="eyebrow">Baukosten-Check</span><h2>Berechnen Sie Ihre Baukosten</h2><p>Ein paar kurze Fragen zu Ihrem Neubau – die grobe Preisrange kommt sofort per WhatsApp.</p></div>
     <div class="cta-center"><button class="btn btn-primary btn-lg" onclick="openFunnel()">Jetzt Baukosten berechnen</button></div>
   </div>
 </section>
 
 <section id="faq">
   <div class="wrap">
-    <div class="sec-head center">
-      <span class="eyebrow">FAQ</span>
-      <h2>Häufige Fragen</h2>
-      <p>Alles Wichtige zum Baukosten-Check auf einen Blick.</p>
-    </div>
+    <div class="sec-head center"><span class="eyebrow">FAQ</span><h2>Häufige Fragen</h2><p>Alles Wichtige zum Baukosten-Check auf einen Blick.</p></div>
     <div class="faq" id="faqList"></div>
   </div>
 </section>
 
 <section>
   <div class="wrap">
-    <div class="band">
-      <h2>Bereit für Ihre erste Einschätzung?</h2>
-      <p>Ein paar Fragen, kostenlos und unverbindlich – die grobe Range kommt direkt per WhatsApp.</p>
-      <button class="btn btn-primary btn-lg" onclick="openFunnel()">Jetzt Baukosten berechnen</button>
-    </div>
+    <div class="band"><h2>Bereit für Ihre erste Einschätzung?</h2><p>Ein paar Fragen, kostenlos und unverbindlich – die grobe Range kommt direkt per WhatsApp.</p><button class="btn btn-primary btn-lg" onclick="openFunnel()">Jetzt Baukosten berechnen</button></div>
   </div>
 </section>
 
 <footer>
-  <div class="wrap foot">
-    <div>© 2024 Reschbau. Alle Rechte vorbehalten.</div>
-    <div class="foot-links"><a href="#">Impressum</a><a href="#">Datenschutz</a><a href="#faq">FAQ</a></div>
-  </div>
+  <div class="wrap foot"><div>© 2024 Reschbau. Alle Rechte vorbehalten.</div><div class="foot-links"><a href="#">Impressum</a><a href="#">Datenschutz</a><a href="#faq">FAQ</a></div></div>
 </footer>
 
 <div class="modal" id="checkModal" aria-hidden="true">
@@ -300,14 +243,13 @@
     </div>
     <div class="modal-body" id="qBody"></div>
     <div class="modal-foot">
-      <button class="btn btn-ghost" id="backBtn" onclick="prev()" style="visibility:hidden">Zurück</button>
-      <button class="btn btn-primary" id="nextBtn" onclick="next()">Weiter</button>
+      <button class="btn btn-ghost" id="backBtn" onclick="prev()" style="display:none">← Zurück</button>
+      <button class="btn btn-primary" id="nextBtn" onclick="next()">Weiter →</button>
     </div>
   </div>
 </div>
 
 <script>
-  /* ===== FAQ ===== */
   const faqs = [
     ["Ist der Baukosten-Check kostenlos?", "Ja, der Baukosten-Check ist vollständig kostenlos und unverbindlich."],
     ["Wie genau ist die Preisrange?", "Die Range wird automatisch aus Ihren Angaben berechnet und ist eine erste grobe Orientierung."],
@@ -317,225 +259,97 @@
     ["Wie geht es nach der Schätzung weiter?", "Für die genaue Planung und Detailfragen melden wir uns persönlich und telefonisch bei Ihnen."]
   ];
   const faqList = document.getElementById('faqList');
-  faqs.forEach(([q, a]) => {
-    const d = document.createElement('details'); d.className = 'qa';
-    d.innerHTML = `<summary style="list-style:none"><button type="button" onclick="event.preventDefault()">${q}<span class="plus"></span></button></summary><div class="ans"><p>${a}</p></div>`;
-    d.querySelector('button').addEventListener('click', () => { d.open = !d.open; });
-    faqList.appendChild(d);
-  });
+  faqs.forEach(([q, a]) => { const d=document.createElement('details'); d.className='qa'; d.innerHTML=`<summary style="list-style:none"><button type="button" onclick="event.preventDefault()">${q}<span class="plus"></span></button></summary><div class="ans"><p>${a}</p></div>`; d.querySelector('button').addEventListener('click',()=>{ d.open=!d.open; }); faqList.appendChild(d); });
 
   /* ===== Baukosten-Funnel (16 Fragen + Live-Berechnung → WhatsApp) ===== */
-  const WA_NUMBER = '436765409552';   // RESCH|Bau WhatsApp
-  const USE_IMAGES = false;           // auf true setzen, sobald Bilder unter images/… liegen
-
-  /* --- Preis-Formel (anpassbar): €/m² nach Bundesland [normal, gehoben, hochwertig] (inkl. USt.) --- */
-  const PREISE_M2 = {
-    'Wien': [3300, 4000, 5300],
-    'Niederösterreich': [2900, 3600, 4300],
-    'Burgenland': [2600, 3200, 3700],
-    'Außerhalb dieser Region': [2900, 3600, 4300]   // Österreich-Medianwert
-  };
-  const F_KELLER = { 'Kein Keller': 1.0, 'Teilunterkellert': 1.08, 'Vollunterkellert': 1.15 };
-  const F_DACHGESCHOSS = 1.2;         // nur bei geneigtem Dach (nicht Flachdach)
-  const GARAGE_M2 = [1200, 1800];     // €/m² falls "Garage" gebaut wird
+  const WA_NUMBER = '436765409552';
+  const USE_IMAGES = false;
+  const PREISE_M2 = { 'Wien':[3300,4000,5300], 'Niederösterreich':[2900,3600,4300], 'Burgenland':[2600,3200,3700], 'Außerhalb dieser Region':[2900,3600,4300] };
+  const F_KELLER = { 'Kein Keller':1.0, 'Teilunterkellert':1.08, 'Vollunterkellert':1.15 };
+  const F_DACHGESCHOSS = 1.2; const GARAGE_M2 = [1200, 1800];
+  const answers = {}; const kontakt = { name:'', files:0 };
+  const pitched = () => answers['Dachform'] && answers['Dachform'] !== 'Flachdach';
 
   const QUESTIONS = [
-    { key:'Bauvorhaben', title:'Was möchten Sie bauen?', layout:'img', type:'single', cols:2, opts:[
-      {v:'Einfamilienhaus', l:'Einfamilienhaus', e:'🏠', img:'images/bauvorhaben/einfamilienhaus.jpg'},
-      {v:'Mehrfamilienhaus', l:'Mehrfamilienhaus', e:'🏢', img:'images/bauvorhaben/mehrfamilienhaus.jpg'},
-      {v:'Zubau', l:'Zubau', e:'🧱', img:'images/bauvorhaben/zubau.jpg'},
-      {v:'Garage', l:'Garage', e:'🚗', img:'images/bauvorhaben/garage.jpg'},
-    ]},
-    { key:'Wohnfläche', title:'Wie groß soll die Wohnfläche sein?', layout:'img', type:'single', cols:3, exactM2:true, opts:[
-      {v:'80–120 m²', l:'80–120 m²', e:'📐', img:'images/flaeche/klein.jpg'},
-      {v:'120–160 m²', l:'120–160 m²', e:'📐', img:'images/flaeche/mittel.jpg'},
-      {v:'über 160 m²', l:'über 160 m²', e:'📐', img:'images/flaeche/gross.jpg'},
-    ]},
-    { key:'Keller', title:'Wünschen Sie einen Keller?', layout:'img', type:'single', cols:3, opts:[
-      {v:'Kein Keller', l:'Kein Keller', e:'⬜', img:'images/keller/kein.jpg'},
-      {v:'Teilunterkellert', l:'Teilunterkellert', e:'🔲', img:'images/keller/teil.jpg'},
-      {v:'Vollunterkellert', l:'Vollunterkellert', e:'⬛', img:'images/keller/voll.jpg'},
-    ]},
-    { key:'Stockwerke', title:'Wie viele oberirdische Stockwerke soll das Gebäude haben?', layout:'img', type:'single', cols:3, opts:[
-      {v:'1 Geschoss / Bungalow', l:'1 Geschoss', s:'Bungalow', e:'🏠', img:'images/geschosse/eins.jpg'},
-      {v:'2 Geschosse', l:'2 Geschosse', e:'🏠', img:'images/geschosse/zwei.jpg'},
-      {v:'3 Geschosse', l:'3 Geschosse', e:'🏢', img:'images/geschosse/drei.jpg'},
-    ]},
-    { key:'Dachgeschoss', title:'Ist ein Dachgeschoss geplant?', layout:'list', type:'single', opts:[
-      {v:'Nein', l:'Nein'}, {v:'Ja', l:'Ja'}, {v:'Noch offen', l:'Noch offen'},
-    ]},
-    { key:'Dachform', title:'Welche Dachform bevorzugen Sie?', layout:'img', type:'single', cols:2, opts:[
-      {v:'Flachdach', l:'Flachdach', e:'⏤', img:'images/dach/flachdach.jpg'},
-      {v:'Satteldach', l:'Satteldach', e:'⛺', img:'images/dach/satteldach.jpg'},
-      {v:'Walmdach', l:'Walmdach', e:'🏔️', img:'images/dach/walmdach.jpg'},
-      {v:'Pultdach', l:'Pultdach', e:'📐', img:'images/dach/pultdach.jpg'},
-    ]},
-    { key:'Bauweise', title:'Welche Bauweise bevorzugen Sie?', layout:'img', type:'single', cols:3, opts:[
-      {v:'Massivbau', l:'Massivbau', s:'Ziegel / Beton', e:'🧱', img:'images/bauweise/massiv.jpg'},
-      {v:'Holzbau / Holzriegelbau', l:'Holzbau', s:'Holzriegelbau', e:'🪵', img:'images/bauweise/holz.jpg'},
-      {v:'Fertigteilbau', l:'Fertigteilbau', s:'Vorgefertigt', e:'🏭', img:'images/bauweise/fertigteil.jpg'},
-    ]},
-    { key:'Leistungsumfang', title:'Welcher Leistungsumfang soll kalkuliert werden?', layout:'list', type:'single', opts:[
-      {v:'Belagsfertig', l:'Belagsfertig'},
-      {v:'Schlüsselfertig standardisierte Innenausstattung', l:'Schlüsselfertig (standardisierte Innenausstattung)'},
-    ]},
-    { key:'Extras', title:'Welche Extras wünschen Sie?', layout:'img', type:'multi', cols:2, opts:[
-      {v:'Garage', l:'Garage', e:'🚗', img:'images/extras/garage.jpg'},
-      {v:'Carport', l:'Carport', e:'🅿️', img:'images/extras/carport.jpg'},
-      {v:'Terrasse / Balkon', l:'Terrasse / Balkon', e:'☀️', img:'images/extras/terrasse.jpg'},
-      {v:'Photovoltaik', l:'Photovoltaik', e:'⚡', img:'images/extras/pv.jpg'},
-      {v:'Smart Home', l:'Smart Home', e:'📱', img:'images/extras/smarthome.jpg'},
-      {v:'Gartengestaltung', l:'Gartengestaltung', e:'🌳', img:'images/extras/garten.jpg'},
-      {v:'Gartenzaun', l:'Gartenzaun', e:'🚧', img:'images/extras/zaun.jpg'},
-      {v:'Pool', l:'Pool', e:'🏊', img:'images/extras/pool.jpg'},
-      {v:'Keine Extras', l:'Keine Extras', e:'✖️'},
-    ]},
-    { key:'Region', title:'Wo soll Ihr Neubauprojekt entstehen?', layout:'list', type:'single', opts:[
-      {v:'Wien', l:'Wien'}, {v:'Niederösterreich', l:'Niederösterreich'}, {v:'Burgenland', l:'Burgenland'}, {v:'Außerhalb dieser Region', l:'Außerhalb dieser Region'},
-    ]},
-    { key:'Grundstück', title:'Gibt es bereits ein Grundstück für Ihr Projekt?', layout:'list', type:'single', opts:[
-      {v:'Ja', l:'Ja'}, {v:'Nein', l:'Nein'}, {v:'In Abklärung', l:'In Abklärung'},
-    ]},
-    { key:'Projektstand', title:'Wie weit ist Ihr Projekt aktuell?', layout:'list', type:'single', opts:[
-      {v:'Erste Idee', l:'Erste Idee'}, {v:'Erste Skizzen vorhanden', l:'Erste Skizzen vorhanden'}, {v:'Grundriss vorhanden', l:'Grundriss vorhanden'}, {v:'Bereits mit Planer gesprochen', l:'Bereits mit Planer gesprochen'}, {v:'Planung / Einreichung in Vorbereitung', l:'Planung / Einreichung in Vorbereitung'},
-    ]},
-    { key:'Start', title:'Wann möchten Sie mit Ihrem Projekt starten?', layout:'list', type:'single', opts:[
-      {v:'Sofort / in den nächsten 3 Monaten', l:'Sofort / in den nächsten 3 Monaten'}, {v:'In 3–6 Monaten', l:'In 3–6 Monaten'}, {v:'In 6–12 Monaten', l:'In 6–12 Monaten'}, {v:'Später / noch offen', l:'Später / noch offen'},
-    ]},
-    { key:'Budget', title:'Welcher Budgetrahmen ist grob vorgesehen?', layout:'list', type:'single', opts:[
-      {v:'Unter 250.000 €', l:'Unter 250.000 €'}, {v:'250.000–400.000 €', l:'250.000–400.000 €'}, {v:'400.000–600.000 €', l:'400.000–600.000 €'}, {v:'600.000 €+', l:'600.000 €+'}, {v:'Noch offen', l:'Noch offen'},
-    ]},
-    { key:'Nächster Schritt', title:'Was ist Ihr gewünschter nächster Schritt?', layout:'list', type:'single', opts:[
-      {v:'Nur eine erste Kostenschätzung', l:'Ich möchte nur eine erste Kostenschätzung'}, {v:'Unverbindliches Erstgespräch', l:'Ich möchte ein unverbindliches Erstgespräch'}, {v:'Planungsgespräch', l:'Ich möchte ein Planungsgespräch'}, {v:'Projekt vorprüfen lassen', l:'Ich möchte mein Projekt vorprüfen lassen'}, {v:'Planung + spätere Ausführung', l:'Planung + spätere Ausführung'},
-    ]},
-    { key:'Unterlagen', title:'Gibt es bereits Unterlagen oder Skizzen?', layout:'list', type:'multi', opts:[
-      {v:'Handskizze vorhanden', l:'Handskizze vorhanden'}, {v:'Grundriss vorhanden', l:'Grundriss vorhanden'}, {v:'Lageplan vorhanden', l:'Lageplan vorhanden'}, {v:'Inspirationsbilder vorhanden', l:'Inspirationsbilder vorhanden'}, {v:'Noch keine Unterlagen', l:'Noch keine Unterlagen'},
-    ]},
+    { key:'Bauvorhaben', title:'Was möchten Sie bauen?', layout:'img', type:'single', cols:2, opts:[ {v:'Einfamilienhaus', l:'Einfamilienhaus', e:'🏠'}, {v:'Mehrfamilienhaus', l:'Mehrfamilienhaus', e:'🏢'}, {v:'Zubau', l:'Zubau', e:'🧱'}, {v:'Garage', l:'Garage', e:'🚗'} ]},
+    { key:'Wohnfläche', title:'Wie groß soll die Wohnfläche sein?', layout:'img', type:'single', cols:3, exactM2:true, opts:[ {v:'80–120 m²', l:'80–120 m²', e:'📐'}, {v:'120–160 m²', l:'120–160 m²', e:'📐'}, {v:'über 160 m²', l:'über 160 m²', e:'📐'} ]},
+    { key:'Keller', title:'Wünschen Sie einen Keller?', layout:'img', type:'single', cols:3, opts:[ {v:'Kein Keller', l:'Kein Keller', e:'⬜'}, {v:'Teilunterkellert', l:'Teilunterkellert', e:'🔲'}, {v:'Vollunterkellert', l:'Vollunterkellert', e:'⬛'} ]},
+    { key:'Stockwerke', title:'Wie viele oberirdische Stockwerke?', layout:'img', type:'single', cols:3, opts:[ {v:'1 Geschoss / Bungalow', l:'1 Geschoss', s:'Bungalow', e:'🏠'}, {v:'2 Geschosse', l:'2 Geschosse', e:'🏠'}, {v:'3 Geschosse', l:'3 Geschosse', e:'🏢'} ]},
+    { key:'Dachgeschoss', title:'Ist ein Dachgeschoss geplant?', layout:'list', type:'single', opts:[ {v:'Nein', l:'Nein'}, {v:'Ja', l:'Ja'}, {v:'Noch offen', l:'Noch offen'} ]},
+    { key:'Dachform', title:'Welche Dachform bevorzugen Sie?', layout:'img', type:'single', cols:2, opts:[ {v:'Flachdach', l:'Flachdach', e:'⏤'}, {v:'Satteldach', l:'Satteldach', e:'⛺'}, {v:'Walmdach', l:'Walmdach', e:'🏔️'}, {v:'Pultdach', l:'Pultdach', e:'📐'} ],
+      subs:[
+        { key:'Gauben', title:'Sind Gauben gewünscht?', layout:'list', type:'single', showIf:pitched, opts:[{v:'Nein',l:'Nein'},{v:'Ja',l:'Ja'}] },
+        { key:'Anzahl Gauben', title:'Wie viele Gauben sind geplant?', layout:'list', type:'single', showIf:()=>pitched()&&answers['Gauben']==='Ja', opts:[{v:'1 Gaube',l:'1 Gaube'},{v:'2 Gauben',l:'2 Gauben'},{v:'3 oder mehr Gauben',l:'3 oder mehr Gauben'},{v:'Noch offen',l:'Noch offen'}] },
+        { key:'Dachflächenfenster', title:'Sind Dachflächenfenster geplant?', layout:'list', type:'single', showIf:pitched, opts:[{v:'Nein',l:'Nein'},{v:'Ja',l:'Ja'}] },
+      ] },
+    { key:'Bauweise', title:'Welche Bauweise bevorzugen Sie?', layout:'img', type:'single', cols:3, opts:[ {v:'Massivbau', l:'Massivbau', s:'Ziegel / Beton', e:'🧱'}, {v:'Holzbau / Holzriegelbau', l:'Holzbau', s:'Holzriegelbau', e:'🪵'}, {v:'Fertigteilbau', l:'Fertigteilbau', s:'Vorgefertigt', e:'🏭'} ]},
+    { key:'Leistungsumfang', title:'Welcher Leistungsumfang soll kalkuliert werden?', layout:'list', type:'single', showNote:true, opts:[ {v:'Belagsfertig', l:'Belagsfertig', desc:'Malerfertig: Wände gemalt, Steckdosen vorhanden, ohne Boden.'}, {v:'Schlüsselfertig standardisierte Innenausstattung', l:'Schlüsselfertig (standardisierte Innenausstattung)', desc:'Bezugsfertig: komplette Innenausstattung inkl. Böden, Türen und Sanitär.'} ]},
+    { key:'Extras', title:'Welche Extras wünschen Sie?', layout:'img', type:'multi', cols:2, none:'Keine Extras', opts:[ {v:'Garage', l:'Garage', e:'🚗'}, {v:'Carport', l:'Carport', e:'🅿️'}, {v:'Terrasse / Balkon', l:'Terrasse / Balkon', e:'☀️'}, {v:'Photovoltaik', l:'Photovoltaik', e:'⚡'}, {v:'Smart Home', l:'Smart Home', e:'📱'}, {v:'Gartengestaltung', l:'Gartengestaltung', e:'🌳'}, {v:'Gartenzaun', l:'Gartenzaun', e:'🚧'}, {v:'Pool', l:'Pool', e:'🏊'}, {v:'Keine Extras', l:'Keine Extras', e:'✖️'} ]},
+    { key:'Region', title:'Wo soll Ihr Neubauprojekt entstehen?', layout:'list', type:'single', opts:[ {v:'Wien', l:'Wien'}, {v:'Niederösterreich', l:'Niederösterreich'}, {v:'Burgenland', l:'Burgenland'}, {v:'Außerhalb dieser Region', l:'Außerhalb dieser Region'} ]},
+    { key:'Grundstück', title:'Gibt es bereits ein Grundstück?', layout:'list', type:'single', opts:[ {v:'Ja', l:'Ja'}, {v:'Nein', l:'Nein'}, {v:'In Abklärung', l:'In Abklärung'} ]},
+    { key:'Projektstand', title:'Wie weit ist Ihr Projekt aktuell?', layout:'list', type:'single', opts:[ {v:'Erste Idee', l:'Erste Idee'}, {v:'Erste Skizzen vorhanden', l:'Erste Skizzen vorhanden'}, {v:'Grundriss vorhanden', l:'Grundriss vorhanden'}, {v:'Bereits mit Planer gesprochen', l:'Bereits mit Planer gesprochen'}, {v:'Planung / Einreichung in Vorbereitung', l:'Planung / Einreichung in Vorbereitung'} ]},
+    { key:'Start', title:'Wann möchten Sie starten?', layout:'list', type:'single', opts:[ {v:'Sofort / in den nächsten 3 Monaten', l:'Sofort / in den nächsten 3 Monaten'}, {v:'In 3–6 Monaten', l:'In 3–6 Monaten'}, {v:'In 6–12 Monaten', l:'In 6–12 Monaten'}, {v:'Später / noch offen', l:'Später / noch offen'} ]},
+    { key:'Budget', title:'Welcher Budgetrahmen ist grob vorgesehen?', layout:'list', type:'single', opts:[ {v:'Unter 250.000 €', l:'Unter 250.000 €'}, {v:'250.000–400.000 €', l:'250.000–400.000 €'}, {v:'400.000–600.000 €', l:'400.000–600.000 €'}, {v:'600.000 €+', l:'600.000 €+'}, {v:'Noch offen', l:'Noch offen'} ]},
+    { key:'Nächster Schritt', title:'Was ist Ihr gewünschter nächster Schritt?', layout:'list', type:'single', opts:[ {v:'Nur eine erste Kostenschätzung', l:'Ich möchte nur eine erste Kostenschätzung'}, {v:'Unverbindliches Erstgespräch', l:'Ich möchte ein unverbindliches Erstgespräch'}, {v:'Planungsgespräch', l:'Ich möchte ein Planungsgespräch'}, {v:'Projekt vorprüfen lassen', l:'Ich möchte mein Projekt vorprüfen lassen'}, {v:'Planung + spätere Ausführung', l:'Planung + spätere Ausführung'} ]},
+    { key:'Unterlagen', title:'Gibt es bereits Unterlagen oder Skizzen?', layout:'list', type:'multi', none:'Noch keine Unterlagen', fileUpload:true, opts:[ {v:'Handskizze vorhanden', l:'Handskizze vorhanden'}, {v:'Grundriss vorhanden', l:'Grundriss vorhanden'}, {v:'Lageplan vorhanden', l:'Lageplan vorhanden'}, {v:'Inspirationsbilder vorhanden', l:'Inspirationsbilder vorhanden'}, {v:'Noch keine Unterlagen', l:'Noch keine Unterlagen'} ]},
   ];
 
-  const answers = {};
-  const kontakt = { name:'' };
   let i = 0;
-  const modal = document.getElementById('checkModal');
-  const qBody = document.getElementById('qBody');
-
-  /* --- Berechnung --- */
-  function getM2() {
-    if (answers._m2exact && +answers._m2exact > 0) return +answers._m2exact;
-    const f = answers['Wohnfläche'] || '';
-    if (f.indexOf('80–120') === 0) return 100;
-    if (f.indexOf('120–160') === 0) return 140;
-    if (f.indexOf('über 160') === 0) return 190;
-    return 140;
-  }
-  function round5000(n) { return Math.round(n / 5000) * 5000; }
-  function berechneRange() {
-    const m2 = getM2();
-    const region = answers['Region'] || 'Außerhalb dieser Region';
-    if (answers['Bauvorhaben'] === 'Garage') {
-      return { lo: round5000(GARAGE_M2[0] * m2), hi: round5000(GARAGE_M2[1] * m2), m2 };
-    }
-    const t = PREISE_M2[region] || PREISE_M2['Außerhalb dieser Region'];
-    const schluessel = (answers['Leistungsumfang'] || '').indexOf('Schlüsselfertig') === 0;
-    let lo = (schluessel ? t[1] : t[0]) * m2;
-    let hi = (schluessel ? t[2] : t[1]) * m2;
-    const kf = F_KELLER[answers['Keller']] || 1.0;
-    lo *= kf; hi *= kf;
-    if (answers['Dachgeschoss'] === 'Ja' && answers['Dachform'] !== 'Flachdach') { lo *= F_DACHGESCHOSS; hi *= F_DACHGESCHOSS; }
-    return { lo: round5000(lo), hi: round5000(hi), m2 };
-  }
+  const modal = document.getElementById('checkModal'); const qBody = document.getElementById('qBody');
+  const defByKey = {}; QUESTIONS.forEach(q => { defByKey[q.key]=q; (q.subs||[]).forEach(s=>defByKey[s.key]=s); });
+  const subVisible = s => (typeof s.showIf==='function' ? s.showIf() : true);
+  const groupsOf = q => [q, ...((q.subs||[]).filter(subVisible))];
+  function getM2(){ if (answers._m2exact && +answers._m2exact>0) return +answers._m2exact; const f=answers['Wohnfläche']||''; if (f.indexOf('80–120')===0) return 100; if (f.indexOf('120–160')===0) return 140; if (f.indexOf('über 160')===0) return 190; return 140; }
+  function round5000(n){ return Math.round(n/5000)*5000; }
+  function berechneRange(){ const m2=getM2(); const region=answers['Region']||'Außerhalb dieser Region'; if (answers['Bauvorhaben']==='Garage') return {lo:round5000(GARAGE_M2[0]*m2),hi:round5000(GARAGE_M2[1]*m2),m2}; const t=PREISE_M2[region]||PREISE_M2['Außerhalb dieser Region']; const sf=(answers['Leistungsumfang']||'').indexOf('Schlüsselfertig')===0; let lo=(sf?t[1]:t[0])*m2, hi=(sf?t[2]:t[1])*m2; const kf=F_KELLER[answers['Keller']]||1.0; lo*=kf; hi*=kf; if (answers['Dachgeschoss']==='Ja' && answers['Dachform']!=='Flachdach'){ lo*=F_DACHGESCHOSS; hi*=F_DACHGESCHOSS; } return {lo:round5000(lo),hi:round5000(hi),m2}; }
   const euro = n => '€ ' + Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
-
-  function openFunnel() { i = 0; renderBody(); modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); document.body.style.overflow = 'hidden'; }
-  function closeFunnel() { modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); document.body.style.overflow = ''; }
-
-  function cardHTML(q, o) {
-    const isSel = q.type === 'multi' ? (answers[q.key]||[]).includes(o.v) : answers[q.key] === o.v;
-    const media = (USE_IMAGES && o.img)
-      ? `<img src="${o.img}" alt="" onerror="this.outerHTML='<span class=&quot;emoji&quot;>${o.e||'•'}</span>'">`
-      : `<span class="emoji">${o.e || '•'}</span>`;
-    return `<button type="button" class="qcard${isSel?' sel':''}" data-v="${o.v}"><span class="check">✓</span><span class="media">${media}</span><span class="lab">${o.l}</span>${o.s?`<span class="sub">${o.s}</span>`:''}</button>`;
-  }
-  function listHTML(q, o) {
-    const isSel = q.type === 'multi' ? (answers[q.key]||[]).includes(o.v) : answers[q.key] === o.v;
-    return `<button type="button" class="qopt${isSel?' sel':''}" data-v="${o.v}"><span class="tick">${isSel?'✓':''}</span><span>${o.l}</span></button>`;
-  }
-
-  function renderBody() {
-    if (i < QUESTIONS.length) {
-      const q = QUESTIONS[i];
-      const hint = q.type === 'multi' ? 'Mehrfachauswahl möglich.' : 'Eine Auswahl genügt.';
-      let body;
-      if (q.layout === 'img') body = `<div class="qcard-grid c${q.cols}">${q.opts.map(o=>cardHTML(q,o)).join('')}</div>`;
-      else body = `<div class="qlist">${q.opts.map(o=>listHTML(q,o)).join('')}</div>`;
-      const extra = q.exactM2 ? `<div class="qextra"><input id="m2exact" type="number" min="20" placeholder="Exakte Wohnfläche in m² (optional)" value="${answers._m2exact||''}"></div>` : '';
-      qBody.innerHTML = `<h3 class="qtitle">${q.title}</h3><p class="qhint">${hint}</p>${body}${extra}`;
-    } else {
-      const r = berechneRange();
-      const keys = ['Bauvorhaben','Wohnfläche','Keller','Dachform','Leistungsumfang','Region'];
-      const rows = keys.map(k => { let v = answers[k]; if (k==='Wohnfläche' && answers._m2exact) v = answers._m2exact + ' m²'; return `<div><span>${k}</span><span>${v||'–'}</span></div>`; }).join('');
-      const extras = (answers['Extras']||[]).filter(x=>x!=='Keine Extras');
-      qBody.innerHTML = `
-        <div class="result"><div class="reb">Ihre grobe Baukosten-Range</div><div class="range">${euro(r.lo)} – ${euro(r.hi)}</div><div class="rnote">für ca. ${r.m2} m² · inkl. USt. · grobe Orientierung auf Basis Ihrer Angaben</div></div>
+  function openFunnel(){ i=0; renderBody(); modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); document.body.classList.add('locked'); }
+  function closeFunnel(){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); document.body.classList.remove('locked'); }
+  function optHTML(g,o){ const isSel = g.type==='multi' ? (answers[g.key]||[]).includes(o.v) : answers[g.key]===o.v;
+    if (g.layout==='img'){ const media=(USE_IMAGES&&o.img)?`<img src="${o.img}" alt="" onerror="this.outerHTML='<span class=&quot;emoji&quot;>${o.e||'•'}</span>'">`:`<span class="emoji">${o.e||'•'}</span>`;
+      return `<button type="button" class="qcard${isSel?' sel':''}" data-k="${g.key}" data-t="${g.type}" data-v="${o.v}"><span class="check">✓</span><span class="media">${media}</span><span class="lab">${o.l}</span>${o.s?`<span class="sub">${o.s}</span>`:''}</button>`; }
+    return `<button type="button" class="qopt${isSel?' sel':''}" data-k="${g.key}" data-t="${g.type}" data-v="${o.v}"><span class="tick">${isSel?'✓':''}</span><span>${o.l}</span></button>`; }
+  const groupHTML = g => `<div class="${g.layout==='img'?'qcard-grid':'qlist'}">${g.opts.map(o=>optHTML(g,o)).join('')}</div>`;
+  function renderBody(){
+    if (i < QUESTIONS.length){ const q=QUESTIONS[i]; const hint=q.type==='multi'?'Mehrfachauswahl möglich.':'Eine Auswahl genügt.';
+      let html=`<h3 class="qtitle">${q.title}</h3><p class="qhint">${hint}</p>${groupHTML(q)}`;
+      if (q.showNote){ const sel=q.opts.find(o=>o.v===answers[q.key]); if (sel&&sel.desc) html+=`<div class="qnote">${sel.desc}</div>`; }
+      if (q.exactM2) html+=`<div class="qextra"><input id="m2exact" type="number" inputmode="numeric" min="20" placeholder="Exakte Wohnfläche in m² (optional)" value="${answers._m2exact||''}"></div>`;
+      (q.subs||[]).forEach(s=>{ if (subVisible(s)) html+=`<div class="qsub"><div class="qsublabel">${s.title}</div>${groupHTML(s)}</div>`; });
+      if (q.fileUpload) html+=`<div class="qfile"><label>Unterlagen hochladen (optional, kein Backend-Upload aktiv)</label><input id="files" type="file" multiple></div>`;
+      qBody.innerHTML=html;
+    } else { const r=berechneRange(); const keys=['Bauvorhaben','Wohnfläche','Keller','Dachform','Leistungsumfang','Region'];
+      const rows=keys.map(k=>{ let v=answers[k]; if (k==='Wohnfläche'&&answers._m2exact) v=answers._m2exact+' m²'; return `<div><span>${k}</span><span>${v||'–'}</span></div>`; }).join('');
+      const extras=(answers['Extras']||[]).filter(x=>x!=='Keine Extras');
+      qBody.innerHTML=`<div class="result"><div class="reb">Ihre grobe Baukosten-Range</div><div class="range">${euro(r.lo)} – ${euro(r.hi)}</div><div class="rnote">für ca. ${r.m2} m² · inkl. USt. · grobe Orientierung auf Basis Ihrer Angaben</div></div>
         <div class="field"><label for="qName">Name</label><input id="qName" type="text" placeholder="Vor- und Nachname" value="${kontakt.name}"></div>
         <div class="summary">${rows}${extras.length?`<div><span>Extras</span><span>${extras.join(', ')}</span></div>`:''}</div>
         <div class="wa-note"><svg width="20" height="20" viewBox="0 0 24 24" fill="#25d366"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2Z"/></svg><span>Mit „Per WhatsApp senden" schicken Sie uns Ihre Angaben. Für die genaue Planung melden wir uns persönlich und telefonisch bei Ihnen.</span></div>`;
     }
-    updateChrome();
+    const total=QUESTIONS.length+1;
+    document.getElementById('progBar').style.width=((i+1)/total*100)+'%';
+    document.getElementById('stepLabel').textContent = i<QUESTIONS.length ? `Schritt ${i+1} von ${QUESTIONS.length}` : 'Ihre Kostenschätzung';
+    document.getElementById('backBtn').style.display = i===0?'none':'inline-flex';
+    document.getElementById('nextBtn').textContent = i===QUESTIONS.length?'Per WhatsApp senden':'Weiter →';
   }
-
-  function updateChrome() {
-    const total = QUESTIONS.length + 1;
-    document.getElementById('progBar').style.width = ((i + 1) / total * 100) + '%';
-    document.getElementById('stepLabel').textContent = i < QUESTIONS.length ? `Schritt ${i + 1} von ${QUESTIONS.length}` : 'Ihre Kostenschätzung';
-    document.getElementById('backBtn').style.visibility = i === 0 ? 'hidden' : 'visible';
-    document.getElementById('nextBtn').textContent = i === QUESTIONS.length ? 'Per WhatsApp senden' : 'Weiter';
-  }
-
-  qBody.addEventListener('click', (e) => {
-    const el = e.target.closest('.qcard, .qopt');
-    if (!el || i >= QUESTIONS.length) return;
-    const q = QUESTIONS[i]; const v = el.dataset.v;
-    if (q.type === 'multi') {
-      let arr = answers[q.key] || [];
-      const none = q.opts[q.opts.length-1].v; // letzte Option = "Keine …"
-      if (v === none) arr = arr.includes(v) ? [] : [v];
-      else { arr = arr.filter(x => x !== none); arr = arr.includes(v) ? arr.filter(x => x !== v) : [...arr, v]; }
-      answers[q.key] = arr;
-    } else { answers[q.key] = v; }
-    renderBody();
-  });
-  qBody.addEventListener('input', (e) => { if (e.target.id === 'm2exact') answers._m2exact = e.target.value.trim(); });
-
-  function captureContact() { const n = document.getElementById('qName'); if (n) kontakt.name = n.value.trim(); }
-  function shakeBody() { qBody.classList.remove('shake'); void qBody.offsetWidth; qBody.classList.add('shake'); }
-
-  function next() {
-    if (i < QUESTIONS.length) {
-      const q = QUESTIONS[i];
-      const sel = answers[q.key];
-      let ok = q.type === 'multi' ? (sel && sel.length) : !!sel;
-      if (q.exactM2 && answers._m2exact && +answers._m2exact > 0) ok = true;
-      if (!ok) { shakeBody(); return; }
-      i++; renderBody(); return;
-    }
-    captureContact();
-    if (!kontakt.name) { const n = document.getElementById('qName'); if (n) n.focus(); shakeBody(); return; }
-    submit();
-  }
-  function prev() { if (i > 0) { if (i === QUESTIONS.length) captureContact(); i--; renderBody(); } }
-
-  function submit() {
-    const r = berechneRange();
-    const lines = ['Hallo RESCHBAU, ich interessiere mich für einen Neubau.', '', `*Grobe Baukosten-Range: ${euro(r.lo)} – ${euro(r.hi)}* (ca. ${r.m2} m²)`, '', 'Meine Angaben:'];
-    QUESTIONS.forEach(q => { let v = answers[q.key]; if (Array.isArray(v)) v = v.length ? v.join(', ') : '-'; lines.push(`• ${q.key}: ${v || '-'}`); });
+  qBody.addEventListener('click',(e)=>{ const el=e.target.closest('.qcard,.qopt'); if(!el) return; const k=el.dataset.k,t=el.dataset.t,v=el.dataset.v;
+    if (t==='multi'){ const none=(defByKey[k]||{}).none; let arr=answers[k]||[]; if (v===none) arr=arr.includes(v)?[]:[v]; else { if (none) arr=arr.filter(x=>x!==none); arr=arr.includes(v)?arr.filter(x=>x!==v):[...arr,v]; } answers[k]=arr; }
+    else answers[k]=v; renderBody(); });
+  qBody.addEventListener('input',(e)=>{ if (e.target.id==='m2exact') answers._m2exact=e.target.value.trim(); });
+  qBody.addEventListener('change',(e)=>{ if (e.target.id==='files') kontakt.files=e.target.files.length; });
+  function captureContact(){ const n=document.getElementById('qName'); if (n) kontakt.name=n.value.trim(); }
+  function shakeBody(){ qBody.classList.remove('shake'); void qBody.offsetWidth; qBody.classList.add('shake'); }
+  function stepValid(){ const q=QUESTIONS[i]; for (const g of groupsOf(q)){ const sel=answers[g.key]; let ok=g.type==='multi'?(sel&&sel.length):!!sel; if (g.exactM2&&answers._m2exact&&+answers._m2exact>0) ok=true; if (!ok) return false; } return true; }
+  function next(){ if (i<QUESTIONS.length){ if (!stepValid()){ shakeBody(); return; } i++; renderBody(); modal.querySelector('.modal-body').scrollTop=0; return; } captureContact(); if (!kontakt.name){ const n=document.getElementById('qName'); if (n) n.focus(); shakeBody(); return; } submit(); }
+  function prev(){ if (i>0){ if (i===QUESTIONS.length) captureContact(); i--; renderBody(); modal.querySelector('.modal-body').scrollTop=0; } }
+  function submit(){ const r=berechneRange(); const lines=['Hallo RESCHBAU, ich interessiere mich für einen Neubau.','',`*Grobe Baukosten-Range: ${euro(r.lo)} – ${euro(r.hi)}* (ca. ${r.m2} m²)`,'','Meine Angaben:'];
+    QUESTIONS.forEach(q=>{ for (const g of groupsOf(q)){ let v=answers[g.key]; if (Array.isArray(v)) v=v.length?v.join(', '):'-'; if (v) lines.push(`• ${g.key}: ${v}`); } });
     if (answers._m2exact) lines.push(`• Exakte Wohnfläche: ${answers._m2exact} m²`);
+    if (kontakt.files) lines.push(`• Unterlagen: ${kontakt.files} Datei(en) ausgewählt (bitte per WhatsApp nachsenden)`);
     if (kontakt.name) lines.push('', `• Name: ${kontakt.name}`);
     lines.push('', 'Bitte meldet euch für ein persönliches Planungsgespräch. Danke!');
-    window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(lines.join('\n'))}`, '_blank');
-  }
-
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeFunnel(); });
+    window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(lines.join('\n'))}`, '_blank'); }
+  document.addEventListener('keydown', e => { if (e.key==='Escape') closeFunnel(); });
 </script>
 </body>
 </html>
