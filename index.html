@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Reschbau Projekt-Check – Was kostet Ihr Projekt ungefähr?</title>
+<meta name="description" content="Beantworten Sie wenige Fragen zu Neubau oder Sanierung. Reschbau prüft Ihre Angaben und sendet Ihnen die grobe Preisrange per WhatsApp. Kostenlos & unverbindlich." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink: #16191d;
+    --ink-soft: #444b54;
+    --muted: #6b7480;
+    --line: #e6e3dd;
+    --bg: #f6f4ef;
+    --card: #ffffff;
+    --brand: #1c2733;     /* deep slate */
+    --accent: #f5a623;    /* construction amber */
+    --accent-ink: #1c1304;
+    --wa: #25d366;        /* whatsapp green */
+    --radius: 16px;
+    --shadow: 0 1px 2px rgba(16,24,40,.04), 0 12px 32px -12px rgba(16,24,40,.18);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, .display { font-family: 'Archivo', sans-serif; letter-spacing: -.02em; }
+  a { color: inherit; }
+  img { max-width: 100%; }
+
+  .wrap { width: min(1120px, 92vw); margin-inline: auto; }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: .5rem;
+    font-size: .8rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--accent-ink);
+    background: rgba(245,166,35,.16);
+    padding: .35rem .7rem; border-radius: 999px;
+  }
+
+  /* ---------- Header ---------- */
+  header {
+    position: sticky; top: 0; z-index: 40;
+    background: rgba(246,244,239,.82);
+    backdrop-filter: saturate(180%) blur(12px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+  .logo { display: flex; align-items: center; gap: .65rem; font-family: 'Archivo'; font-weight: 800; text-decoration: none; }
+  .logo .mark {
+    width: 34px; height: 34px; border-radius: 9px; background: var(--brand);
+    display: grid; place-items: center; color: var(--accent); font-size: 1.05rem;
+  }
+  .logo .name { font-size: 1.18rem; line-height: 1; }
+  .logo .sub { display:block; font-family:'Inter'; font-weight:500; font-size:.62rem; letter-spacing:.22em; color: var(--muted); text-transform: uppercase; margin-top: 3px; }
+  .nav-links { display: flex; align-items: center; gap: 2rem; }
+  .nav-links a { text-decoration: none; color: var(--ink-soft); font-weight: 500; font-size: .95rem; }
+  .nav-links a:hover { color: var(--ink); }
+  .menu-btn { display: none; background: none; border: 0; padding: .4rem; cursor: pointer; }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: .55rem;
+    font-family: 'Archivo'; font-weight: 700; font-size: .98rem;
+    padding: .85rem 1.4rem; border-radius: 12px; border: 0; cursor: pointer;
+    text-decoration: none; transition: transform .12s ease, box-shadow .12s ease, background .15s;
+    white-space: nowrap;
+  }
+  .btn:active { transform: translateY(1px); }
+  .btn-primary { background: var(--accent); color: var(--accent-ink); box-shadow: 0 8px 20px -8px rgba(245,166,35,.7); }
+  .btn-primary:hover { background: #f6b13e; }
+  .btn-dark { background: var(--brand); color: #fff; }
+  .btn-dark:hover { background: #243240; }
+  .btn-ghost { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+  .btn-ghost:hover { border-color: #cfcabf; background: #fff; }
+  .btn-lg { padding: 1.05rem 1.7rem; font-size: 1.05rem; }
+
+  /* ---------- Hero ---------- */
+  .hero { padding: clamp(3rem, 7vw, 6rem) 0 clamp(2.5rem, 5vw, 4rem); }
+  .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; }
+  .hero h1 { font-size: clamp(2.4rem, 5.4vw, 4rem); line-height: 1.04; font-weight: 800; margin: 1.2rem 0 1.1rem; }
+  .hero p.lead { font-size: 1.18rem; color: var(--ink-soft); max-width: 38ch; margin: 0 0 1.8rem; }
+  .hero-cta { display: flex; flex-wrap: wrap; gap: .8rem; margin-bottom: 1.8rem; }
+  .trust { display: flex; flex-wrap: wrap; gap: 1.2rem 1.6rem; color: var(--muted); font-size: .92rem; }
+  .trust span { display: inline-flex; align-items: center; gap: .45rem; }
+  .trust svg { color: var(--accent-ink); }
+
+  /* Hero visual card */
+  .hero-card {
+    background: var(--brand); color: #fff; border-radius: 22px; padding: 1.6rem;
+    box-shadow: var(--shadow); position: relative; overflow: hidden;
+  }
+  .hero-card::before {
+    content: ""; position: absolute; inset: 0;
+    background:
+      radial-gradient(120% 80% at 100% 0%, rgba(245,166,35,.22), transparent 55%),
+      repeating-linear-gradient(135deg, rgba(255,255,255,.04) 0 14px, transparent 14px 28px);
+    pointer-events: none;
+  }
+  .hc-top { display: flex; align-items: center; justify-content: space-between; position: relative; }
+  .hc-badge { display:inline-flex; align-items:center; gap:.5rem; background: rgba(255,255,255,.1); padding:.4rem .75rem; border-radius:999px; font-size:.82rem; font-weight:600; }
+  .hc-wa { display:inline-flex; align-items:center; gap:.45rem; color: var(--wa); font-weight:700; font-size:.9rem; }
+  .chat { position: relative; margin-top: 1.4rem; display: grid; gap: .7rem; }
+  .bubble { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.08); padding: .85rem 1rem; border-radius: 14px; font-size: .95rem; max-width: 86%; }
+  .bubble.them { border-bottom-left-radius: 4px; }
+  .bubble.us { background: var(--wa); color: #06280f; margin-left: auto; border-bottom-right-radius: 4px; font-weight: 600; }
+  .bubble .price { font-family: 'Archivo'; font-weight: 800; font-size: 1.25rem; display: block; margin-top: .15rem; }
+  .hc-foot { position: relative; margin-top: 1.3rem; font-size: .8rem; color: rgba(255,255,255,.6); }
+
+  /* ---------- Section scaffold ---------- */
+  section { padding: clamp(3rem, 6vw, 5.5rem) 0; }
+  .sec-head { max-width: 56ch; margin-bottom: 2.6rem; }
+  .sec-head.center { margin-inline: auto; text-align: center; }
+  .sec-head h2 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); line-height: 1.1; margin: .9rem 0 .6rem; font-weight: 800; }
+  .sec-head p { color: var(--ink-soft); font-size: 1.1rem; margin: 0; }
+
+  /* ---------- Steps ---------- */
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+  .step { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.8rem 1.6rem; box-shadow: var(--shadow); position: relative; }
+  .step .num {
+    width: 46px; height: 46px; border-radius: 12px; background: var(--brand); color: var(--accent);
+    font-family: 'Archivo'; font-weight: 800; font-size: 1.25rem; display: grid; place-items: center; margin-bottom: 1.1rem;
+  }
+  .step h3 { font-size: 1.2rem; margin: 0 0 .5rem; }
+  .step p { color: var(--ink-soft); margin: 0; font-size: .98rem; }
+  .step .icon { position: absolute; top: 1.7rem; right: 1.5rem; color: #cfcabf; }
+
+  /* ---------- Project type cards ---------- */
+  .types { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+  .type {
+    position: relative; overflow: hidden; cursor: pointer; text-align: left;
+    background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 2rem 1.9rem; box-shadow: var(--shadow); transition: transform .15s, border-color .15s;
+    display: flex; flex-direction: column; gap: .6rem; font: inherit; color: inherit;
+  }
+  .type:hover { transform: translateY(-3px); border-color: var(--accent); }
+  .type .tag { font-size: .78rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--accent-ink); }
+  .type h3 { font-size: 1.45rem; margin: 0; }
+  .type p { color: var(--ink-soft); margin: 0; }
+  .type .go { margin-top: .6rem; display: inline-flex; align-items: center; gap: .5rem; font-family: 'Archivo'; font-weight: 700; color: var(--brand); }
+  .type .emoji { font-size: 2rem; }
+
+  /* ---------- FAQ ---------- */
+  .faq { max-width: 760px; margin-inline: auto; }
+  .qa { border-bottom: 1px solid var(--line); }
+  .qa button {
+    width: 100%; text-align: left; background: none; border: 0; cursor: pointer;
+    padding: 1.35rem 0; display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    font-family: 'Archivo'; font-weight: 700; font-size: 1.12rem; color: var(--ink);
+  }
+  .qa .plus { flex: none; width: 26px; height: 26px; position: relative; transition: transform .2s; }
+  .qa .plus::before, .qa .plus::after { content:""; position:absolute; background: var(--accent-ink); border-radius: 2px; }
+  .qa .plus::before { top: 12px; left: 4px; right: 4px; height: 2px; }
+  .qa .plus::after { left: 12px; top: 4px; bottom: 4px; width: 2px; transition: transform .2s, opacity .2s; }
+  .qa[open] .plus::after { transform: rotate(90deg); opacity: 0; }
+  .qa .ans { max-height: 0; overflow: hidden; transition: max-height .25s ease; }
+  .qa .ans p { margin: 0 0 1.35rem; color: var(--ink-soft); font-size: 1.02rem; }
+  .qa[open] .ans { max-height: 240px; }
+
+  /* ---------- CTA band ---------- */
+  .band { background: var(--brand); color: #fff; border-radius: 26px; padding: clamp(2.4rem, 5vw, 4rem); text-align: center; position: relative; overflow: hidden; box-shadow: var(--shadow); }
+  .band::before { content:""; position:absolute; inset:0; background: radial-gradient(90% 120% at 50% -20%, rgba(245,166,35,.28), transparent 60%); }
+  .band > * { position: relative; }
+  .band h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); margin: 0 0 .8rem; font-weight: 800; }
+  .band p { color: rgba(255,255,255,.78); font-size: 1.15rem; margin: 0 auto 1.8rem; max-width: 46ch; }
+
+  /* ---------- Footer ---------- */
+  footer { padding: 3rem 0 2.5rem; border-top: 1px solid var(--line); margin-top: 1rem; }
+  .foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.2rem; color: var(--muted); font-size: .92rem; }
+  .foot a { color: var(--muted); text-decoration: none; }
+  .foot a:hover { color: var(--ink); }
+  .foot-links { display: flex; gap: 1.4rem; flex-wrap: wrap; }
+
+  /* ---------- Modal questionnaire ---------- */
+  .modal { position: fixed; inset: 0; z-index: 100; display: none; }
+  .modal.open { display: block; }
+  .modal-bg { position: absolute; inset: 0; background: rgba(16,20,26,.55); backdrop-filter: blur(3px); }
+  .modal-panel {
+    position: relative; background: var(--bg); width: min(540px, 94vw); margin: clamp(1rem,6vh,4rem) auto;
+    border-radius: 20px; box-shadow: 0 30px 80px -20px rgba(0,0,0,.5); overflow: hidden;
+    max-height: 88vh; display: flex; flex-direction: column;
+  }
+  .modal-head { padding: 1.4rem 1.6rem 1rem; border-bottom: 1px solid var(--line); }
+  .modal-head .bar { height: 6px; background: var(--line); border-radius: 999px; overflow: hidden; margin-bottom: 1rem; }
+  .modal-head .bar i { display: block; height: 100%; background: var(--accent); width: 20%; transition: width .3s; border-radius: 999px; }
+  .modal-head .row { display: flex; align-items: center; justify-content: space-between; }
+  .modal-head .step-label { font-size: .82rem; font-weight: 600; color: var(--muted); letter-spacing: .04em; }
+  .modal-close { background: none; border: 0; font-size: 1.5rem; line-height: 1; cursor: pointer; color: var(--muted); padding: .2rem .4rem; }
+  .modal-body { padding: 1.6rem; overflow-y: auto; }
+  .q-step { display: none; }
+  .q-step.active { display: block; animation: fade .25s ease; }
+  @keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .q-step h3 { font-size: 1.35rem; margin: 0 0 .35rem; }
+  .q-step .hint { color: var(--muted); margin: 0 0 1.2rem; font-size: .95rem; }
+  .opts { display: grid; gap: .7rem; }
+  .opt {
+    display: flex; align-items: center; gap: .8rem; padding: 1rem 1.1rem; border: 1.5px solid var(--line);
+    background: #fff; border-radius: 12px; cursor: pointer; font-weight: 500; transition: border-color .12s, background .12s;
+  }
+  .opt:hover { border-color: #cfcabf; }
+  .opt.sel { border-color: var(--accent); background: rgba(245,166,35,.08); }
+  .opt .dot { width: 18px; height: 18px; border-radius: 50%; border: 2px solid var(--line); flex: none; display: grid; place-items: center; }
+  .opt.sel .dot { border-color: var(--accent); }
+  .opt.sel .dot::after { content:""; width: 9px; height: 9px; border-radius: 50%; background: var(--accent); }
+  .field { display: grid; gap: .4rem; margin-bottom: 1rem; }
+  .field label { font-weight: 600; font-size: .9rem; }
+  .field input, .field textarea {
+    font: inherit; padding: .85rem 1rem; border: 1.5px solid var(--line); border-radius: 12px; background: #fff; width: 100%;
+  }
+  .field input:focus, .field textarea:focus { outline: 2px solid rgba(245,166,35,.5); border-color: var(--accent); }
+  .modal-foot { padding: 1rem 1.6rem 1.4rem; border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: .8rem; }
+  .summary { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 1rem 1.2rem; margin-bottom: 1.2rem; }
+  .summary div { display: flex; justify-content: space-between; gap: 1rem; padding: .35rem 0; font-size: .95rem; border-bottom: 1px dashed var(--line); }
+  .summary div:last-child { border-bottom: 0; }
+  .summary span:first-child { color: var(--muted); }
+  .summary span:last-child { font-weight: 600; text-align: right; }
+  .wa-note { display: flex; gap: .6rem; align-items: flex-start; background: rgba(37,211,102,.1); border: 1px solid rgba(37,211,102,.3); border-radius: 12px; padding: .9rem 1rem; font-size: .9rem; color: #0c3d1c; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 880px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-card { order: -1; }
+    .steps { grid-template-columns: 1fr; }
+    .types { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .menu-btn { display: block; }
+    .nav-links.show {
+      display: flex; position: absolute; top: 72px; left: 0; right: 0; flex-direction: column;
+      background: var(--bg); padding: 1.2rem 5vw 1.6rem; gap: 1.1rem; border-bottom: 1px solid var(--line); align-items: flex-start;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#top">
+      <span class="mark">▲</span>
+      <span class="name">RESCHBAU<span class="sub">Baumeister</span></span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#ablauf">Ablauf</a>
+      <a href="#projekt-check">Projekt-Check</a>
+      <a href="#faq">FAQ</a>
+      <a href="#" class="btn btn-primary" onclick="openCheck(); return false;">Projekt-Check starten</a>
+    </nav>
+    <button class="menu-btn" aria-label="Menü" onclick="document.getElementById('navLinks').classList.toggle('show')">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+</header>
+
+<a id="top"></a>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">● Wien · Niederösterreich · Burgenland</span>
+      <h1>Was kostet Ihr Projekt ungefähr?</h1>
+      <p class="lead">Beantworten Sie wenige Fragen zu Neubau oder Sanierung. Reschbau prüft Ihre Angaben und sendet Ihnen die grobe Range per WhatsApp.</p>
+      <div class="hero-cta">
+        <button class="btn btn-primary btn-lg" onclick="openCheck()">Jetzt Projekt-Check starten</button>
+        <a class="btn btn-ghost btn-lg" href="#ablauf">So funktioniert's</a>
+      </div>
+      <div class="trust">
+        <span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6 9 17l-5-5"/></svg> Kostenlos &amp; unverbindlich</span>
+        <span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6 9 17l-5-5"/></svg> Antwort per WhatsApp</span>
+        <span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6 9 17l-5-5"/></svg> Neubau &amp; Sanierung</span>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <div class="hc-top">
+        <span class="hc-badge">Reschbau · Projekt-Check</span>
+        <span class="hc-wa">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8 0-1.3.7-2 .9-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.3 0 .5l-.4.5c-.2.2-.3.4-.1.6.2.4.9 1.4 1.9 2 1.3.8 1.5.6 1.7.5l.6-.7c.2-.3.4-.2.6-.1l1.9.9c.2.1.4.2.4.3.1.2.1.6-.1 1.2Z"/></svg>
+          WhatsApp
+        </span>
+      </div>
+      <div class="chat">
+        <div class="bubble them">Neubau Einfamilienhaus, ca. 140 m², Wien-Umgebung. Was kostet das ungefähr?</div>
+        <div class="bubble them">Massivbau, schlüsselfertig 🏠</div>
+        <div class="bubble us">Danke! Erste grobe Range für Ihr Projekt:
+          <span class="price">€ 385.000 – 470.000</span>
+          Gerne besprechen wir die Details.</div>
+      </div>
+      <div class="hc-foot">Beispielhafte Darstellung · echte Range basiert auf Ihren Angaben</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABLAUF -->
+<section id="ablauf">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Ablauf</span>
+      <h2>So funktioniert der Projekt-Check</h2>
+      <p>In drei Schritten zur ersten Einschätzung.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <svg class="icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+        <h3>Angaben ausfüllen</h3>
+        <p>Beantworten Sie wenige Fragen zu Ihrem Neubau- oder Sanierungsprojekt.</p>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <svg class="icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m21 21-4.3-4.3M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14Z"/></svg>
+        <h3>Reschbau prüft Ihr Projekt</h3>
+        <p>Unser Team sichtet Ihre Angaben und berechnet eine realistische erste Einschätzung.</p>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <svg class="icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/></svg>
+        <h3>Range per WhatsApp erhalten</h3>
+        <p>Sie erhalten Ihre grobe Preisrange direkt per WhatsApp – schnell und unkompliziert.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJEKTTYPEN -->
+<section id="projekt-check">
+  <div class="wrap">
+    <div class="sec-head center">
+      <span class="eyebrow">Projekt-Check</span>
+      <h2>Welches Projekt möchten Sie einschätzen?</h2>
+      <p>Wählen Sie Ihren Projekttyp – der Rest dauert nur eine Minute.</p>
+    </div>
+    <div class="types">
+      <button class="type" onclick="openCheck('Neubau')">
+        <span class="emoji">🏗️</span>
+        <span class="tag">Neubau</span>
+        <h3>Neubauprojekt kalkulieren</h3>
+        <p>Vom Einfamilienhaus bis zum Mehrparteienhaus – erhalten Sie eine erste Preisrange.</p>
+        <span class="go">Starten
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span>
+      </button>
+      <button class="type" onclick="openCheck('Sanierung')">
+        <span class="emoji">🔧</span>
+        <span class="tag">Sanierung</span>
+        <h3>Sanierungsprojekt einschätzen</h3>
+        <p>Von der Teilsanierung bis zur Kernsanierung – wir schätzen Ihren Aufwand ein.</p>
+        <span class="go">Starten
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-head center">
+      <span class="eyebrow">FAQ</span>
+      <h2>Häufige Fragen</h2>
+      <p>Alles Wichtige zum Projekt-Check auf einen Blick.</p>
+    </div>
+    <div class="faq" id="faqList">
+      <!-- filled by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section>
+  <div class="wrap">
+    <div class="band">
+      <h2>Bereit für Ihre erste Einschätzung?</h2>
+      <p>Wenige Fragen, kostenlos und unverbindlich – die grobe Range kommt direkt per WhatsApp.</p>
+      <button class="btn btn-primary btn-lg" onclick="openCheck()">Jetzt Projekt-Check starten</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <div>© 2024 Reschbau. Alle Rechte vorbehalten.</div>
+    <div class="foot-links">
+      <a href="#">Impressum</a>
+      <a href="#">Datenschutz</a>
+      <a href="#faq">FAQ</a>
+    </div>
+  </div>
+</footer>
+
+<!-- MODAL: PROJEKT-CHECK -->
+<div class="modal" id="checkModal" aria-hidden="true">
+  <div class="modal-bg" onclick="closeCheck()"></div>
+  <div class="modal-panel" role="dialog" aria-modal="true" aria-label="Projekt-Check">
+    <div class="modal-head">
+      <div class="bar"><i id="progBar"></i></div>
+      <div class="row">
+        <span class="step-label" id="stepLabel">Schritt 1 von 5</span>
+        <button class="modal-close" aria-label="Schließen" onclick="closeCheck()">&times;</button>
+      </div>
+    </div>
+
+    <div class="modal-body" id="modalBody">
+      <!-- Step 1 -->
+      <div class="q-step active" data-step="1">
+        <h3>Was möchten Sie einschätzen?</h3>
+        <p class="hint">Wählen Sie Ihren Projekttyp.</p>
+        <div class="opts" data-field="Projekttyp" data-single>
+          <div class="opt" data-val="Neubau"><span class="dot"></span> Neubauprojekt</div>
+          <div class="opt" data-val="Sanierung"><span class="dot"></span> Sanierungsprojekt</div>
+        </div>
+      </div>
+      <!-- Step 2 -->
+      <div class="q-step" data-step="2">
+        <h3>Um welche Art von Gebäude geht es?</h3>
+        <p class="hint">Eine Auswahl genügt.</p>
+        <div class="opts" data-field="Gebäudeart" data-single>
+          <div class="opt" data-val="Einfamilienhaus"><span class="dot"></span> Einfamilienhaus</div>
+          <div class="opt" data-val="Doppel-/Reihenhaus"><span class="dot"></span> Doppel- / Reihenhaus</div>
+          <div class="opt" data-val="Mehrparteienhaus"><span class="dot"></span> Mehrparteienhaus</div>
+          <div class="opt" data-val="Gewerbe/Sonstiges"><span class="dot"></span> Gewerbe / Sonstiges</div>
+        </div>
+      </div>
+      <!-- Step 3 -->
+      <div class="q-step" data-step="3">
+        <h3>Wie groß ist das Projekt ungefähr?</h3>
+        <p class="hint">Geschätzte Wohn- bzw. Nutzfläche.</p>
+        <div class="opts" data-field="Größe" data-single>
+          <div class="opt" data-val="bis 100 m²"><span class="dot"></span> bis 100 m²</div>
+          <div class="opt" data-val="100–180 m²"><span class="dot"></span> 100 – 180 m²</div>
+          <div class="opt" data-val="180–300 m²"><span class="dot"></span> 180 – 300 m²</div>
+          <div class="opt" data-val="über 300 m²"><span class="dot"></span> über 300 m²</div>
+        </div>
+      </div>
+      <!-- Step 4 -->
+      <div class="q-step" data-step="4">
+        <h3>In welcher Region liegt das Projekt?</h3>
+        <p class="hint">Reschbau ist in Wien, Niederösterreich und dem Burgenland tätig.</p>
+        <div class="opts" data-field="Region" data-single>
+          <div class="opt" data-val="Wien"><span class="dot"></span> Wien</div>
+          <div class="opt" data-val="Niederösterreich"><span class="dot"></span> Niederösterreich</div>
+          <div class="opt" data-val="Burgenland"><span class="dot"></span> Burgenland</div>
+          <div class="opt" data-val="Andere / noch offen"><span class="dot"></span> Andere / noch offen</div>
+        </div>
+      </div>
+      <!-- Step 5 -->
+      <div class="q-step" data-step="5">
+        <h3>Wohin dürfen wir die Range senden?</h3>
+        <p class="hint">Sie erhalten Ihre grobe Preisrange per WhatsApp.</p>
+        <div class="field">
+          <label for="qName">Name</label>
+          <input id="qName" type="text" placeholder="Vor- und Nachname" />
+        </div>
+        <div class="field">
+          <label for="qPhone">WhatsApp-Nummer</label>
+          <input id="qPhone" type="tel" placeholder="+43 …" />
+        </div>
+        <div class="field">
+          <label for="qNote">Anmerkungen (optional)</label>
+          <textarea id="qNote" rows="2" placeholder="z. B. Zeitrahmen, Besonderheiten"></textarea>
+        </div>
+        <div class="summary" id="summary"></div>
+        <div class="wa-note">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#25d366"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2Z"/></svg>
+          <span>Mit dem Absenden öffnet sich WhatsApp mit Ihrer vorausgefüllten Anfrage. Ihre Daten werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-foot">
+      <button class="btn btn-ghost" id="backBtn" onclick="prevStep()" style="visibility:hidden">Zurück</button>
+      <button class="btn btn-primary" id="nextBtn" onclick="nextStep()">Weiter</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  /* ---- FAQ data + render (verbatim copy) ---- */
+  const faqs = [
+    ["Ist der Projekt-Check kostenlos?", "Ja, der Projekt-Check ist vollständig kostenlos und unverbindlich."],
+    ["Wie genau ist die Preisrange?", "Die Range ist eine erste Orientierung auf Basis Ihrer Angaben."],
+    ["Warum erhalte ich die Range per WhatsApp?", "WhatsApp ermöglicht eine schnelle, direkte Kommunikation."],
+    ["In welchen Regionen ist Reschbau tätig?", "Reschbau ist hauptsächlich in Wien, Niederösterreich und dem Burgenland tätig."],
+    ["Was passiert mit meinen Daten?", "Ihre Daten werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet."],
+    ["Kann ich auch ein Sanierungsprojekt einreichen?", "Ja, der Projekt-Check umfasst sowohl Neubau- als auch Sanierungsprojekte."]
+  ];
+  const faqList = document.getElementById('faqList');
+  faqs.forEach(([q, a]) => {
+    const d = document.createElement('details');
+    d.className = 'qa';
+    d.innerHTML = `<summary style="list-style:none"><button type="button" onclick="event.preventDefault()">${q}<span class="plus"></span></button></summary><div class="ans"><p>${a}</p></div>`;
+    // Use native details toggle by clicking summary
+    const btn = d.querySelector('button');
+    btn.addEventListener('click', () => { d.open = !d.open; });
+    faqList.appendChild(d);
+  });
+
+  /* ---- Questionnaire logic ---- */
+  const TOTAL = 5;
+  let step = 1;
+  let firstStep = 1;
+  const answers = {};
+  const modal = document.getElementById('checkModal');
+
+  // WhatsApp business number (placeholder – replace with real number)
+  const WA_NUMBER = '4300000000000';
+
+  function openCheck(preset) {
+    if (preset) { answers['Projekttyp'] = preset; firstStep = 2; } else { firstStep = 1; }
+    step = firstStep;
+    syncSelections();
+    showStep();
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeCheck() {
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  // Option selection
+  document.querySelectorAll('.opts').forEach(group => {
+    const field = group.dataset.field;
+    group.querySelectorAll('.opt').forEach(opt => {
+      opt.addEventListener('click', () => {
+        group.querySelectorAll('.opt').forEach(o => o.classList.remove('sel'));
+        opt.classList.add('sel');
+        answers[field] = opt.dataset.val;
+      });
+    });
+  });
+
+  function syncSelections() {
+    document.querySelectorAll('.opts').forEach(group => {
+      const field = group.dataset.field;
+      group.querySelectorAll('.opt').forEach(o => {
+        o.classList.toggle('sel', answers[field] === o.dataset.val);
+      });
+    });
+  }
+
+  function showStep() {
+    document.querySelectorAll('.q-step').forEach(s => s.classList.toggle('active', +s.dataset.step === step));
+    const shownTotal = TOTAL - firstStep + 1;
+    const shownStep = step - firstStep + 1;
+    document.getElementById('progBar').style.width = (shownStep / shownTotal * 100) + '%';
+    document.getElementById('stepLabel').textContent = `Schritt ${shownStep} von ${shownTotal}`;
+    document.getElementById('backBtn').style.visibility = step === firstStep ? 'hidden' : 'visible';
+    document.getElementById('nextBtn').textContent = step === TOTAL ? 'Per WhatsApp senden' : 'Weiter';
+    if (step === TOTAL) renderSummary();
+  }
+
+  function renderSummary() {
+    const fields = ['Projekttyp', 'Gebäudeart', 'Größe', 'Region'];
+    const html = fields.map(f => `<div><span>${f}</span><span>${answers[f] || '–'}</span></div>`).join('');
+    document.getElementById('summary').innerHTML = html;
+  }
+
+  function nextStep() {
+    // simple validation for choice steps
+    const current = document.querySelector(`.q-step[data-step="${step}"]`);
+    const group = current.querySelector('.opts');
+    if (group && !answers[group.dataset.field]) {
+      group.style.animation = 'shake .3s';
+      setTimeout(() => group.style.animation = '', 300);
+      return;
+    }
+    if (step < TOTAL) { step++; showStep(); return; }
+    submitCheck();
+  }
+  function prevStep() { if (step > firstStep) { step--; showStep(); } }
+
+  function submitCheck() {
+    const name = document.getElementById('qName').value.trim();
+    const phone = document.getElementById('qPhone').value.trim();
+    const note = document.getElementById('qNote').value.trim();
+    const lines = [
+      'Hallo Reschbau, ich möchte einen Projekt-Check anfragen:',
+      '',
+      `• Projekttyp: ${answers['Projekttyp'] || '-'}`,
+      `• Gebäudeart: ${answers['Gebäudeart'] || '-'}`,
+      `• Größe: ${answers['Größe'] || '-'}`,
+      `• Region: ${answers['Region'] || '-'}`,
+      name ? `• Name: ${name}` : '',
+      note ? `• Anmerkung: ${note}` : '',
+      '',
+      'Bitte senden Sie mir die grobe Preisrange. Danke!'
+    ].filter(Boolean);
+    const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(lines.join('\n'))}`;
+    window.open(url, '_blank');
+  }
+
+  // close on Escape
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeCheck(); });
+
+  // small shake keyframe
+  const style = document.createElement('style');
+  style.textContent = '@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}';
+  document.head.appendChild(style);
+</script>
+</body>
+</html>
