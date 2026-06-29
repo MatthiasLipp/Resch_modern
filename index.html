@@ -4,106 +4,67 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <title>Reschbau Baukosten-Check – Was kostet Ihr Neubau ungefähr?</title>
-<meta name="description" content="Beantworten Sie ein paar kurze Fragen zu Ihrem Neubau und erhalten Sie Ihre grobe Preisrange sofort per WhatsApp." />
+<meta name="description" content="Beantworten Sie ein paar kurze Fragen zu Ihrem Neubau – Ihre grobe Preisrange erhalten Sie anschließend per WhatsApp." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 <style>
-  :root { --ink:#16191d; --ink-soft:#444b54; --muted:#6b7480; --line:#e6e3dd; --bg:#f6f4ef; --card:#fff; --brand:#1c2733; --accent:#f5a623; --accent-ink:#1c1304; --wa:#25d366; --radius:16px; --shadow:0 1px 2px rgba(16,24,40,.04),0 12px 32px -12px rgba(16,24,40,.18); }
+  :root { --ink:#16191d; --ink-soft:#444b54; --muted:#6b7480; --line:#e6e3dd; --bg:#f6f4ef; --card:#fff; --brand:#1c2733; --accent:#f5a623; --accent-ink:#1c1304; --shadow:0 1px 2px rgba(16,24,40,.04),0 12px 32px -12px rgba(16,24,40,.18); }
   * { box-sizing:border-box; }
   html { scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
   body { margin:0; font-family:'Inter',system-ui,-apple-system,sans-serif; color:var(--ink); background:var(--bg); line-height:1.6; -webkit-font-smoothing:antialiased; }
-  body.locked { overflow:hidden; }
   h1,h2,h3 { font-family:'Archivo',sans-serif; letter-spacing:-.02em; }
-  a { color:inherit; } img { max-width:100%; }
-  .wrap { width:min(1120px,92vw); margin-inline:auto; }
-  .eyebrow { display:inline-flex; align-items:center; gap:.5rem; font-size:.8rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--accent-ink); background:rgba(245,166,35,.16); padding:.35rem .7rem; border-radius:999px; }
-  header { position:sticky; top:0; z-index:40; background:rgba(246,244,239,.82); backdrop-filter:saturate(180%) blur(12px); border-bottom:1px solid var(--line); }
-  .nav { display:flex; align-items:center; justify-content:space-between; height:72px; }
-  .logo { display:flex; align-items:center; gap:.65rem; font-family:'Archivo'; font-weight:800; text-decoration:none; }
-  .logo .mark { width:34px; height:34px; border-radius:9px; background:var(--brand); display:grid; place-items:center; color:var(--accent); font-size:1.05rem; }
-  .logo .name { font-size:1.18rem; line-height:1; }
-  .logo .sub { display:block; font-family:'Inter'; font-weight:500; font-size:.62rem; letter-spacing:.22em; color:var(--muted); text-transform:uppercase; margin-top:3px; }
-  .nav-links { display:flex; align-items:center; gap:2rem; }
-  .nav-links a { text-decoration:none; color:var(--ink-soft); font-weight:500; font-size:.95rem; }
-  .menu-btn { display:none; background:none; border:0; padding:.4rem; cursor:pointer; }
-  .btn { display:inline-flex; align-items:center; justify-content:center; gap:.55rem; font-family:'Archivo'; font-weight:700; font-size:.98rem; min-height:48px; padding:.85rem 1.4rem; border-radius:12px; border:0; cursor:pointer; text-decoration:none; transition:transform .12s, box-shadow .12s, background .15s; white-space:nowrap; }
-  .btn:active { transform:translateY(1px); }
-  .btn-primary { background:var(--accent); color:var(--accent-ink); box-shadow:0 8px 20px -8px rgba(245,166,35,.7); }
-  .btn-primary:hover { background:#f6b13e; }
-  .btn-ghost { background:transparent; color:var(--ink); border:1px solid var(--line); }
-  .btn-ghost:hover { border-color:#cfcabf; background:#fff; }
-  .btn-lg { min-height:54px; padding:1rem 1.7rem; font-size:1.05rem; }
+  a { color:inherit; text-decoration:none; }
+  .wrap { width:min(960px,92vw); margin-inline:auto; }
 
-  .hero { padding:clamp(2.4rem,7vw,6rem) 0 clamp(2.4rem,5vw,4rem); }
-  .hero-grid { display:grid; grid-template-columns:1.05fr .95fr; gap:clamp(1.6rem,5vw,4rem); align-items:center; }
-  .hero h1 { font-size:clamp(2rem,7vw,4rem); line-height:1.05; font-weight:800; margin:1rem 0 1rem; }
-  .hero p.lead { font-size:clamp(1.05rem,3.6vw,1.18rem); color:var(--ink-soft); max-width:40ch; margin:0 0 1.6rem; }
-  .hero-cta { display:flex; flex-wrap:wrap; gap:.7rem; margin-bottom:1.6rem; }
-  .trust { display:flex; flex-wrap:wrap; gap:.9rem 1.4rem; color:var(--muted); font-size:.9rem; }
-  .trust span { display:inline-flex; align-items:center; gap:.45rem; }
-  .trust svg { color:var(--accent-ink); }
-  .hero-card { background:var(--brand); color:#fff; border-radius:22px; padding:1.5rem; box-shadow:var(--shadow); position:relative; overflow:hidden; }
-  .hero-card::before { content:""; position:absolute; inset:0; background:radial-gradient(120% 80% at 100% 0%, rgba(245,166,35,.22), transparent 55%), repeating-linear-gradient(135deg, rgba(255,255,255,.04) 0 14px, transparent 14px 28px); pointer-events:none; }
-  .hc-top { display:flex; align-items:center; justify-content:space-between; position:relative; }
-  .hc-badge { display:inline-flex; align-items:center; gap:.5rem; background:rgba(255,255,255,.1); padding:.4rem .75rem; border-radius:999px; font-size:.78rem; font-weight:600; }
-  .hc-wa { display:inline-flex; align-items:center; gap:.45rem; color:var(--wa); font-weight:700; font-size:.88rem; }
-  .chat { position:relative; margin-top:1.3rem; display:grid; gap:.6rem; }
-  .bubble { background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.08); padding:.8rem 1rem; border-radius:14px; font-size:.92rem; max-width:88%; }
-  .bubble.them { border-bottom-left-radius:4px; }
-  .bubble.us { background:var(--wa); color:#06280f; margin-left:auto; border-bottom-right-radius:4px; font-weight:600; }
-  .bubble .price { font-family:'Archivo'; font-weight:800; font-size:1.2rem; display:block; margin-top:.15rem; }
-  .hc-foot { position:relative; margin-top:1.2rem; font-size:.78rem; color:rgba(255,255,255,.6); }
+  /* brand */
+  .brand { text-align:center; padding:2rem 0 .4rem; }
+  .blogo { display:inline-flex; align-items:center; gap:.7rem; }
+  .blogo .mark { width:42px; height:42px; border-radius:11px; background:var(--brand); display:grid; place-items:center; color:var(--accent); font-size:1.3rem; }
+  .blogo .name { font-family:'Archivo'; font-weight:800; font-size:1.7rem; color:var(--ink); line-height:1; }
+  .blogo .sub { display:block; font-family:'Inter'; font-weight:500; font-size:.66rem; letter-spacing:.24em; color:var(--muted); text-transform:uppercase; margin-top:4px; }
 
-  section { padding:clamp(2.6rem,6vw,5.5rem) 0; }
-  .sec-head { max-width:56ch; margin-bottom:2.2rem; }
-  .sec-head.center { margin-inline:auto; text-align:center; }
-  .sec-head h2 { font-size:clamp(1.6rem,5.5vw,2.6rem); line-height:1.1; margin:.9rem 0 .6rem; font-weight:800; }
+  .hero { padding:1rem 0 .5rem; text-align:center; }
+  .headline { font-family:'Archivo'; font-size:clamp(1.7rem,6.4vw,2.7rem); font-weight:800; color:var(--ink); margin:.4rem 0 .9rem; line-height:1.1; }
+  .badge { display:inline-block; background:var(--accent); color:var(--accent-ink); font-family:'Archivo'; font-weight:800; text-transform:uppercase; letter-spacing:.14em; font-size:clamp(.72rem,3vw,.84rem); padding:.5rem 1.2rem; border-radius:999px; margin-bottom:1rem; }
+  .introline { color:var(--ink-soft); max-width:54ch; margin:0 auto; font-size:clamp(.98rem,3.6vw,1.12rem); }
+
+  section { padding:clamp(2rem,6vw,3.4rem) 0; }
+  .sec-head { text-align:center; max-width:56ch; margin:0 auto 1.8rem; }
+  .sec-head .eyebrow { display:inline-block; font-size:.78rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--accent-ink); background:rgba(245,166,35,.16); padding:.35rem .7rem; border-radius:999px; margin-bottom:.7rem; }
+  .sec-head h2 { font-size:clamp(1.5rem,5.5vw,2.2rem); margin:0 0 .4rem; font-weight:800; }
   .sec-head p { color:var(--ink-soft); font-size:clamp(1rem,3.6vw,1.1rem); margin:0; }
-  .steps { display:grid; grid-template-columns:repeat(3,1fr); gap:1.2rem; }
-  .step { background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:1.7rem 1.5rem; box-shadow:var(--shadow); position:relative; }
+  .steps { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; }
+  .step { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:1.6rem 1.4rem; box-shadow:var(--shadow); }
   .step .num { width:46px; height:46px; border-radius:12px; background:var(--brand); color:var(--accent); font-family:'Archivo'; font-weight:800; font-size:1.25rem; display:grid; place-items:center; margin-bottom:1rem; }
-  .step h3 { font-size:1.18rem; margin:0 0 .5rem; }
-  .step p { color:var(--ink-soft); margin:0; font-size:.98rem; }
-  .step .icon { position:absolute; top:1.6rem; right:1.4rem; color:#cfcabf; }
-  .cta-center { text-align:center; }
-  .faq { max-width:760px; margin-inline:auto; }
+  .step h3 { font-size:1.15rem; margin:0 0 .45rem; }
+  .step p { color:var(--ink-soft); margin:0; font-size:.97rem; }
+  .faq { max-width:760px; margin:0 auto; }
   .qa { border-bottom:1px solid var(--line); }
-  .qa > button { width:100%; text-align:left; background:none; border:0; cursor:pointer; padding:1.25rem 0; display:flex; align-items:center; justify-content:space-between; gap:1rem; font-family:'Archivo'; font-weight:700; font-size:clamp(1.05rem,4vw,1.12rem); color:var(--ink); }
-  .qa .plus { flex:none; width:26px; height:26px; position:relative; }
+  .qa > button { width:100%; text-align:left; background:none; border:0; cursor:pointer; padding:1.2rem .1rem; display:flex; align-items:center; justify-content:space-between; gap:1rem; font-family:'Archivo'; font-weight:700; font-size:clamp(1.02rem,4vw,1.12rem); color:var(--ink); }
+  .qa .plus { flex:none; width:24px; height:24px; position:relative; }
   .qa .plus::before, .qa .plus::after { content:""; position:absolute; background:var(--accent-ink); border-radius:2px; }
-  .qa .plus::before { top:12px; left:4px; right:4px; height:2px; }
-  .qa .plus::after { left:12px; top:4px; bottom:4px; width:2px; transition:transform .2s, opacity .2s; }
+  .qa .plus::before { top:11px; left:3px; right:3px; height:2px; }
+  .qa .plus::after { left:11px; top:3px; bottom:3px; width:2px; transition:transform .2s, opacity .2s; }
   .qa.open .plus::after { transform:rotate(90deg); opacity:0; }
   .qa .ans { max-height:0; overflow:hidden; transition:max-height .25s ease; }
-  .qa .ans p { margin:0 0 1.3rem; color:var(--ink-soft); font-size:1.02rem; }
+  .qa .ans p { margin:0 .1rem 1.2rem; color:var(--ink-soft); font-size:1rem; }
   .qa.open .ans { max-height:240px; }
-  .band { background:var(--brand); color:#fff; border-radius:26px; padding:clamp(2rem,5vw,4rem); text-align:center; position:relative; overflow:hidden; box-shadow:var(--shadow); }
-  .band::before { content:""; position:absolute; inset:0; background:radial-gradient(90% 120% at 50% -20%, rgba(245,166,35,.28), transparent 60%); }
-  .band > * { position:relative; }
-  .band h2 { font-size:clamp(1.6rem,5vw,2.8rem); margin:0 0 .8rem; font-weight:800; }
-  .band p { color:rgba(255,255,255,.78); font-size:clamp(1rem,3.6vw,1.15rem); margin:0 auto 1.6rem; max-width:46ch; }
-  footer { padding:2.6rem 0 2.4rem; border-top:1px solid var(--line); margin-top:1rem; }
-  .foot { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:1rem; color:var(--muted); font-size:.9rem; }
-  .foot a { color:var(--muted); } .foot-links { display:flex; gap:1.4rem; flex-wrap:wrap; }
+  footer { border-top:1px solid var(--line); padding:2.2rem 0; text-align:center; color:var(--muted); }
+  footer .flogo { font-family:'Archivo'; font-weight:800; color:var(--ink); }
+  footer .flinks { display:flex; gap:1.4rem; justify-content:center; flex-wrap:wrap; margin:.6rem 0; }
+  footer .flinks a { color:var(--muted); } footer .copy { font-size:.88rem; }
 
-  /* Modal funnel */
-  .modal { position:fixed; inset:0; z-index:100; display:none; }
-  .modal.open { display:block; }
-  .modal-bg { position:absolute; inset:0; background:rgba(16,20,26,.55); backdrop-filter:blur(3px); }
-  .modal-panel { position:relative; background:var(--bg); width:min(620px,96vw); margin:clamp(.5rem,3vh,2.5rem) auto; border-radius:18px; box-shadow:0 30px 80px -20px rgba(0,0,0,.5); overflow:hidden; max-height:94vh; display:flex; flex-direction:column; }
-  .modal-head { padding:1.1rem 1.4rem .9rem; border-bottom:1px solid var(--line); }
-  .modal-head .bar { height:6px; background:var(--line); border-radius:999px; overflow:hidden; margin-bottom:.7rem; }
-  .modal-head .bar i { display:block; height:100%; background:var(--accent); width:6%; transition:width .3s; border-radius:999px; }
-  .modal-head .row { display:flex; align-items:center; justify-content:space-between; }
-  .modal-head .step-label { font-size:.78rem; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:.03em; }
-  .modal-close { background:none; border:0; font-size:1.6rem; line-height:1; cursor:pointer; color:var(--muted); padding:.2rem .5rem; }
-  .modal-body { padding:1.4rem; overflow-y:auto; -webkit-overflow-scrolling:touch; }
-  .modal-body.shake { animation:shake .3s; }
+  /* Funnel (offen, ohne Box) */
+  .funnel { max-width:560px; margin:1.4rem auto 0; }
+  .fprogress { height:6px; background:#e9e5dd; overflow:hidden; border-radius:99px; }
+  .fprogress i { display:block; height:100%; background:var(--accent); width:6%; transition:width .3s; border-radius:99px; }
+  .fstep { margin:.9rem 0 .2rem; font-size:.8rem; font-weight:700; color:var(--muted); letter-spacing:.04em; text-transform:uppercase; }
+  .fbody.shake { animation:shake .3s; }
   @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-6px)} 75%{transform:translateX(6px)} }
-  .modal-foot { padding:.9rem 1.4rem 1.2rem; border-top:1px solid var(--line); display:flex; gap:.7rem; }
-  .modal-foot .btn { flex:1; }
-  .qtitle { font-size:clamp(1.2rem,5vw,1.4rem); margin:0 0 .25rem; font-family:'Archivo'; font-weight:800; line-height:1.2; }
+  .ffoot { display:flex; gap:.7rem; margin-top:1.4rem; }
+  .ffoot .btn-primary { flex:1; }
+  .qtitle { font-family:'Archivo'; color:var(--ink); font-size:clamp(1.25rem,5vw,1.5rem); margin:0 0 .25rem; font-weight:800; line-height:1.2; }
   .qhint { color:var(--muted); margin:0 0 1.1rem; font-size:.92rem; }
   .qcard-grid { display:grid; gap:.6rem; grid-template-columns:1fr 1fr; }
   .qcard { position:relative; display:flex; flex-direction:column; align-items:center; gap:.4rem; text-align:center; padding:.8rem .65rem; border:2px solid var(--line); border-radius:14px; background:#fff; cursor:pointer; transition:border-color .12s, transform .1s; font:inherit; color:inherit; }
@@ -114,7 +75,7 @@
   .qcard .media img { width:100%; height:100%; object-fit:cover; }
   .qcard .media .emoji { font-size:2.1rem; }
   .qcard .media svg.qicon { width:auto; height:66%; max-width:84%; stroke:#1e2630; fill:none; stroke-width:2.3; stroke-linecap:round; stroke-linejoin:round; }
-  .qcard.sel .media svg.qicon { stroke:var(--accent); }
+  .qcard.sel .media svg.qicon { stroke:var(--brand); }
   .qcard .lab { font-weight:700; font-family:'Archivo'; font-size:.95rem; line-height:1.2; }
   .qcard .sub { font-size:.76rem; color:var(--muted); line-height:1.2; }
   .qcard .check { position:absolute; top:.45rem; right:.45rem; width:22px; height:22px; border-radius:50%; background:var(--accent); color:var(--accent-ink); display:none; align-items:center; justify-content:center; font-weight:800; font-size:.78rem; }
@@ -134,69 +95,40 @@
   .qextra input:focus, .qfile input:focus, .field input:focus { outline:2px solid rgba(245,166,35,.5); border-color:var(--accent); }
   .field { display:grid; gap:.4rem; margin-bottom:1rem; }
   .field label { font-weight:600; font-size:.9rem; }
-  .result { text-align:center; background:var(--brand); color:#fff; border-radius:14px; padding:1.4rem 1rem; margin-bottom:1.2rem; position:relative; overflow:hidden; }
-  .result::before { content:""; position:absolute; inset:0; background:radial-gradient(90% 120% at 50% -10%, rgba(245,166,35,.3), transparent 60%); }
-  .result > * { position:relative; }
-  .result .reb { font-size:.76rem; text-transform:uppercase; letter-spacing:.18em; color:var(--accent); font-weight:700; }
-  .result .range { font-family:'Archivo'; font-weight:800; font-size:clamp(1.6rem,7vw,2.2rem); margin:.35rem 0; }
-  .result .rnote { font-size:.8rem; color:rgba(255,255,255,.7); }
   .summary { background:#fff; border:1px solid var(--line); border-radius:12px; padding:.8rem 1rem; margin-bottom:1.2rem; }
   .summary div { display:flex; justify-content:space-between; gap:1rem; padding:.3rem 0; font-size:.88rem; border-bottom:1px dashed var(--line); }
   .summary div:last-child { border-bottom:0; }
   .summary span:first-child { color:var(--muted); } .summary span:last-child { font-weight:600; text-align:right; }
   .wa-note { display:flex; gap:.6rem; align-items:flex-start; background:rgba(37,211,102,.1); border:1px solid rgba(37,211,102,.3); border-radius:12px; padding:.9rem 1rem; font-size:.88rem; color:#0c3d1c; }
-
-  @media (max-width:880px){ .hero-grid{ grid-template-columns:1fr; } .hero-card{ order:-1; } .steps{ grid-template-columns:1fr; } .nav-links{ display:none; } .menu-btn{ display:block; }
-    .nav-links.show { display:flex; position:absolute; top:72px; left:0; right:0; flex-direction:column; background:var(--bg); padding:1.2rem 5vw 1.6rem; gap:1.1rem; border-bottom:1px solid var(--line); align-items:flex-start; } }
+  .btn-primary { display:inline-flex; align-items:center; justify-content:center; gap:.5rem; font-family:'Archivo'; font-weight:700; font-size:1rem; min-height:52px; padding:.85rem 1.6rem; border-radius:12px; border:0; cursor:pointer; background:var(--accent); color:var(--accent-ink); box-shadow:0 8px 20px -8px rgba(245,166,35,.7); transition:transform .12s, filter .15s; }
+  .btn-primary:active { transform:translateY(1px); }
+  .btn-ghost { background:#fff; color:var(--ink); border:1.5px solid var(--line); font-family:'Archivo'; font-weight:700; min-height:52px; padding:.85rem 1.3rem; border-radius:12px; cursor:pointer; }
+  @media (max-width:820px){ .steps{ grid-template-columns:1fr; } }
   @media (max-width:360px){ .qcard-grid{ grid-template-columns:1fr; } }
 </style>
 </head>
 <body>
 
-<header>
-  <div class="wrap nav">
-    <a class="logo" href="#top"><span class="mark">▲</span><span class="name">RESCHBAU<span class="sub">Baumeister</span></span></a>
-    <nav class="nav-links" id="navLinks">
-      <a href="#ablauf">Ablauf</a>
-      <a href="#projekt-check">Baukosten-Check</a>
-      <a href="#faq">FAQ</a>
-      <a href="#" class="btn btn-primary" onclick="openFunnel(); return false;">Baukosten berechnen</a>
-    </nav>
-    <button class="menu-btn" aria-label="Menü" onclick="document.getElementById('navLinks').classList.toggle('show')">
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
-    </button>
-  </div>
-</header>
-
 <a id="top"></a>
 
+<div class="brand">
+  <div class="blogo"><span class="mark">▲</span><div style="text-align:left"><span class="name">RESCHBAU</span><span class="sub">Baumeister</span></div></div>
+</div>
+
 <section class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <span class="eyebrow">● Wien · Niederösterreich · Burgenland</span>
-      <h1>Was kostet Ihr Neubau ungefähr?</h1>
-      <p class="lead">Beantworten Sie ein paar kurze Fragen zu Ihrem Bauvorhaben. Sie erhalten Ihre grobe Preisrange sofort – direkt per WhatsApp.</p>
-      <div class="hero-cta">
-        <button class="btn btn-primary btn-lg" onclick="openFunnel()">Jetzt Baukosten berechnen</button>
-        <a class="btn btn-ghost btn-lg" href="#ablauf">So funktioniert's</a>
+  <div class="wrap">
+    <h1 class="headline">Was kostet Ihr Neubau ungefähr?</h1>
+    <span class="badge">Baukosten-Check</span>
+    <p class="introline">Beantworten Sie ein paar kurze Fragen zu Ihrem Neubau. Ihre grobe Preisrange erhalten Sie anschließend persönlich per WhatsApp.</p>
+
+    <div class="funnel">
+      <div class="fprogress"><i id="progBar"></i></div>
+      <div class="fstep" id="stepLabel">Schritt 1 von 16</div>
+      <div class="fbody" id="qBody"></div>
+      <div class="ffoot">
+        <button class="btn-ghost" id="backBtn" onclick="prev()" style="display:none">← Zurück</button>
+        <button class="btn-primary" id="nextBtn" onclick="next()">Weiter →</button>
       </div>
-      <div class="trust">
-        <span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6 9 17l-5-5"/></svg> Kostenlos &amp; unverbindlich</span>
-        <span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6 9 17l-5-5"/></svg> Sofort-Schätzung</span>
-        <span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6 9 17l-5-5"/></svg> Antwort per WhatsApp</span>
-      </div>
-    </div>
-    <div class="hero-card">
-      <div class="hc-top">
-        <span class="hc-badge">Reschbau · Baukosten-Check</span>
-        <span class="hc-wa"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8 0-1.3.7-2 .9-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.3 0 .5l-.4.5c-.2.2-.3.4-.1.6.2.4.9 1.4 1.9 2 1.3.8 1.5.6 1.7.5l.6-.7c.2-.3.4-.2.6-.1l1.9.9c.2.1.4.2.4.3.1.2.1.6-.1 1.2Z"/></svg> WhatsApp</span>
-      </div>
-      <div class="chat">
-        <div class="bubble them">Neubau Einfamilienhaus, ca. 140 m², Massivbau, NÖ.</div>
-        <div class="bubble them">Mit Vollkeller und Satteldach 🏠</div>
-        <div class="bubble us">Ihre grobe Baukosten-Range:<span class="price">€ 695.000 – 830.000</span>Gerne besprechen wir die Details telefonisch.</div>
-      </div>
-      <div class="hc-foot">Beispielhafte Darstellung · echte Range basiert auf Ihren Angaben</div>
     </div>
   </div>
 </section>
@@ -205,65 +137,41 @@
   <div class="wrap">
     <div class="sec-head"><span class="eyebrow">Ablauf</span><h2>So funktioniert der Baukosten-Check</h2><p>In drei Schritten zu Ihrer ersten Einschätzung.</p></div>
     <div class="steps">
-      <div class="step"><div class="num">1</div><svg class="icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg><h3>Angaben ausfüllen</h3><p>Beantworten Sie ein paar kurze Fragen zu Ihrem Neubau – in 1–2 Minuten.</p></div>
-      <div class="step"><div class="num">2</div><svg class="icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/></svg><h3>Range sofort per WhatsApp</h3><p>Ihre grobe Preisrange wird automatisch berechnet und kommt direkt per WhatsApp.</p></div>
-      <div class="step"><div class="num">3</div><svg class="icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L8 9.6a16 16 0 0 0 6 6l1.1-1.1a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.7 2Z"/></svg><h3>Persönliches Planungsgespräch</h3><p>Für die genaue Planung und Detailfragen melden wir uns telefonisch bei Ihnen.</p></div>
+      <div class="step"><div class="num">1</div><h3>Angaben ausfüllen</h3><p>Beantworten Sie ein paar kurze Fragen zu Ihrem Neubau – in 1–2 Minuten.</p></div>
+      <div class="step"><div class="num">2</div><h3>Range per WhatsApp</h3><p>Sie senden uns Ihre Angaben und erhalten Ihre grobe Preisrange persönlich per WhatsApp.</p></div>
+      <div class="step"><div class="num">3</div><h3>Persönliches Planungsgespräch</h3><p>Für die genaue Planung und Detailfragen melden wir uns telefonisch bei Ihnen.</p></div>
     </div>
-  </div>
-</section>
-
-<section id="projekt-check">
-  <div class="wrap">
-    <div class="sec-head center"><span class="eyebrow">Baukosten-Check</span><h2>Berechnen Sie Ihre Baukosten</h2><p>Ein paar kurze Fragen zu Ihrem Neubau – die grobe Preisrange kommt sofort per WhatsApp.</p></div>
-    <div class="cta-center"><button class="btn btn-primary btn-lg" onclick="openFunnel()">Jetzt Baukosten berechnen</button></div>
   </div>
 </section>
 
 <section id="faq">
   <div class="wrap">
-    <div class="sec-head center"><span class="eyebrow">FAQ</span><h2>Häufige Fragen</h2><p>Alles Wichtige zum Baukosten-Check auf einen Blick.</p></div>
+    <div class="sec-head"><span class="eyebrow">FAQ</span><h2>Häufige Fragen</h2><p>Alles Wichtige zum Baukosten-Check auf einen Blick.</p></div>
     <div class="faq" id="faqList"></div>
   </div>
 </section>
 
-<section>
-  <div class="wrap">
-    <div class="band"><h2>Bereit für Ihre erste Einschätzung?</h2><p>Ein paar Fragen, kostenlos und unverbindlich – die grobe Range kommt direkt per WhatsApp.</p><button class="btn btn-primary btn-lg" onclick="openFunnel()">Jetzt Baukosten berechnen</button></div>
-  </div>
-</section>
-
 <footer>
-  <div class="wrap foot"><div>© 2024 Reschbau. Alle Rechte vorbehalten.</div><div class="foot-links"><a href="#">Impressum</a><a href="#">Datenschutz</a><a href="#faq">FAQ</a></div></div>
-</footer>
-
-<div class="modal" id="checkModal" aria-hidden="true">
-  <div class="modal-bg" onclick="closeFunnel()"></div>
-  <div class="modal-panel" role="dialog" aria-modal="true" aria-label="Baukosten-Check">
-    <div class="modal-head">
-      <div class="bar"><i id="progBar"></i></div>
-      <div class="row"><span class="step-label" id="stepLabel">Schritt 1 von 16</span><button class="modal-close" aria-label="Schließen" onclick="closeFunnel()">&times;</button></div>
-    </div>
-    <div class="modal-body" id="qBody"></div>
-    <div class="modal-foot">
-      <button class="btn btn-ghost" id="backBtn" onclick="prev()" style="display:none">← Zurück</button>
-      <button class="btn btn-primary" id="nextBtn" onclick="next()">Weiter →</button>
-    </div>
+  <div class="wrap">
+    <div class="flogo">RESCHBAU – Baumeister</div>
+    <div class="flinks"><a href="#">Impressum</a><a href="#">Datenschutz</a><a href="#faq">FAQ</a></div>
+    <div class="copy">© 2024 Reschbau. Alle Rechte vorbehalten.</div>
   </div>
-</div>
+</footer>
 
 <script>
   const faqs = [
     ["Ist der Baukosten-Check kostenlos?", "Ja, der Baukosten-Check ist vollständig kostenlos und unverbindlich."],
-    ["Wie genau ist die Preisrange?", "Die Range wird automatisch aus Ihren Angaben berechnet und ist eine erste grobe Orientierung."],
-    ["Warum erhalte ich die Range per WhatsApp?", "WhatsApp ermöglicht eine schnelle, direkte Kommunikation."],
+    ["Wie erhalte ich meine Preisrange?", "Sie senden uns Ihre Angaben über den Check – Ihre grobe Preisrange erhalten Sie anschließend persönlich per WhatsApp."],
+    ["Warum läuft das über WhatsApp?", "WhatsApp ermöglicht eine schnelle, direkte und persönliche Kommunikation."],
     ["In welchen Regionen ist Reschbau tätig?", "Reschbau ist hauptsächlich in Wien, Niederösterreich und dem Burgenland tätig."],
     ["Was passiert mit meinen Daten?", "Ihre Daten werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet."],
-    ["Wie geht es nach der Schätzung weiter?", "Für die genaue Planung und Detailfragen melden wir uns persönlich und telefonisch bei Ihnen."]
+    ["Wie geht es danach weiter?", "Für die genaue Planung und Detailfragen melden wir uns persönlich und telefonisch bei Ihnen."]
   ];
   const faqList = document.getElementById('faqList');
-  faqs.forEach(([q, a]) => { const d=document.createElement('details'); d.className='qa'; d.innerHTML=`<summary style="list-style:none"><button type="button" onclick="event.preventDefault()">${q}<span class="plus"></span></button></summary><div class="ans"><p>${a}</p></div>`; d.querySelector('button').addEventListener('click',()=>{ d.open=!d.open; }); faqList.appendChild(d); });
+  faqs.forEach(([q, a]) => { const d=document.createElement('div'); d.className='qa'; d.innerHTML=`<button type="button"><span>${q}</span><span class="plus"></span></button><div class="ans"><p>${a}</p></div>`; d.querySelector('button').addEventListener('click',()=>d.classList.toggle('open')); faqList.appendChild(d); });
 
-  /* ===== Baukosten-Funnel (16 Fragen + Live-Berechnung → WhatsApp) ===== */
+  /* ===== Baukosten-Funnel (16 Fragen, inline; Preis kommt per WhatsApp) ===== */
   const WA_NUMBER = '436765409552';
   const USE_IMAGES = false;
   const ICONS = {
@@ -271,7 +179,6 @@
     mfh:'<path d="M14 8h20v26H14z"/><path d="M19 13h3v3h-3zM26 13h3v3h-3zM19 21h3v3h-3zM26 21h3v3h-3z"/><path d="M22 28h4v6h-4z"/>',
     zubau:'<path d="M6 22 18 12 30 22"/><path d="M9 21v13h18V21"/><path d="M27 27h13v7H27z"/>',
     garage:'<path d="M8 20 24 12 40 20"/><path d="M11 19v15h26V19"/><path d="M15 24h18M15 28h18M15 32h18"/>',
-    flaeche:'<path d="M9 10h30v22H9z"/><path d="M15 16v-6h6M33 26v6h-6"/><path d="M9 10 39 32"/>',
     keller_kein:'<path d="M11 18 24 9 37 18"/><path d="M14 17v11h20V17"/><path d="M6 28h36"/>',
     keller_teil:'<path d="M11 17 24 9 37 17"/><path d="M14 16v11h20V16"/><path d="M6 27h36"/><path d="M14 27v8h11v-8" fill="rgba(30,38,48,.13)"/>',
     keller_voll:'<path d="M11 16 24 8 37 16"/><path d="M14 15v11h20V15"/><path d="M6 26h36"/><path d="M14 26v9h20v-9" fill="rgba(30,38,48,.13)"/>',
@@ -296,7 +203,6 @@
   };
   const ICON_FOR = {
     'Einfamilienhaus':'efh','Mehrfamilienhaus':'mfh','Zubau':'zubau','Garage':'garage',
-    '80–120 m²':'flaeche','120–160 m²':'flaeche','über 160 m²':'flaeche',
     'Kein Keller':'keller_kein','Teilunterkellert':'keller_teil','Vollunterkellert':'keller_voll',
     '1 Geschoss / Bungalow':'geschoss1','2 Geschosse':'geschoss2','3 Geschosse':'geschoss3',
     'Flachdach':'flachdach','Satteldach':'satteldach','Walmdach':'walmdach','Pultdach':'pultdach',
@@ -310,15 +216,12 @@
     'Massivbau':'Ziegel oder Beton','Holzbau / Holzriegelbau':'Holzriegel-Konstruktion','Fertigteilbau':'Vorgefertigte Bauteile',
     'Carport':'Überdachter Stellplatz (offen)'
   };
-  const PREISE_M2 = { 'Wien':[3300,4000,5300], 'Niederösterreich':[2900,3600,4300], 'Burgenland':[2600,3200,3700], 'Außerhalb dieser Region':[2900,3600,4300] };
-  const F_KELLER = { 'Kein Keller':1.0, 'Teilunterkellert':1.08, 'Vollunterkellert':1.15 };
-  const F_DACHGESCHOSS = 1.2; const GARAGE_M2 = [1200, 1800];
   const answers = {}; const kontakt = { name:'', files:0 };
   const pitched = () => answers['Dachform'] && answers['Dachform'] !== 'Flachdach';
 
   const QUESTIONS = [
     { key:'Bauvorhaben', title:'Was möchten Sie bauen?', layout:'img', type:'single', cols:2, opts:[ {v:'Einfamilienhaus', l:'Einfamilienhaus', e:'🏠'}, {v:'Mehrfamilienhaus', l:'Mehrfamilienhaus', e:'🏢'}, {v:'Zubau', l:'Zubau', e:'🧱'}, {v:'Garage', l:'Garage', e:'🚗'} ]},
-    { key:'Wohnfläche', title:'Wie groß soll die Wohnfläche sein?', layout:'img', type:'single', cols:3, exactM2:true, opts:[ {v:'80–120 m²', l:'80–120 m²', e:'📐'}, {v:'120–160 m²', l:'120–160 m²', e:'📐'}, {v:'über 160 m²', l:'über 160 m²', e:'📐'} ]},
+    { key:'Wohnfläche', title:'Wie groß soll die Wohnfläche sein?', layout:'list', type:'single', exactM2:true, opts:[ {v:'80–120 m²', l:'80–120 m²'}, {v:'120–160 m²', l:'120–160 m²'}, {v:'über 160 m²', l:'über 160 m²'} ]},
     { key:'Keller', title:'Wünschen Sie einen Keller?', layout:'img', type:'single', cols:3, opts:[ {v:'Kein Keller', l:'Kein Keller', e:'⬜'}, {v:'Teilunterkellert', l:'Teilunterkellert', e:'🔲'}, {v:'Vollunterkellert', l:'Vollunterkellert', e:'⬛'} ]},
     { key:'Stockwerke', title:'Wie viele oberirdische Stockwerke?', layout:'img', type:'single', cols:3, opts:[ {v:'1 Geschoss / Bungalow', l:'1 Geschoss', s:'Bungalow', e:'🏠'}, {v:'2 Geschosse', l:'2 Geschosse', e:'🏠'}, {v:'3 Geschosse', l:'3 Geschosse', e:'🏢'} ]},
     { key:'Dachgeschoss', title:'Ist ein Dachgeschoss geplant?', layout:'list', type:'single', opts:[ {v:'Nein', l:'Nein'}, {v:'Ja', l:'Ja'}, {v:'Noch offen', l:'Noch offen'} ]},
@@ -341,19 +244,13 @@
   ];
 
   let i = 0;
-  const modal = document.getElementById('checkModal'); const qBody = document.getElementById('qBody');
+  const qBody = document.getElementById('qBody');
   const defByKey = {}; QUESTIONS.forEach(q => { defByKey[q.key]=q; (q.subs||[]).forEach(s=>defByKey[s.key]=s); });
   const subVisible = s => (typeof s.showIf==='function' ? s.showIf() : true);
   const groupsOf = q => [q, ...((q.subs||[]).filter(subVisible))];
-  function getM2(){ if (answers._m2exact && +answers._m2exact>0) return +answers._m2exact; const f=answers['Wohnfläche']||''; if (f.indexOf('80–120')===0) return 100; if (f.indexOf('120–160')===0) return 140; if (f.indexOf('über 160')===0) return 190; return 140; }
-  function round5000(n){ return Math.round(n/5000)*5000; }
-  function berechneRange(){ const m2=getM2(); const region=answers['Region']||'Außerhalb dieser Region'; if (answers['Bauvorhaben']==='Garage') return {lo:round5000(GARAGE_M2[0]*m2),hi:round5000(GARAGE_M2[1]*m2),m2}; const t=PREISE_M2[region]||PREISE_M2['Außerhalb dieser Region']; const sf=(answers['Leistungsumfang']||'').indexOf('Schlüsselfertig')===0; let lo=(sf?t[1]:t[0])*m2, hi=(sf?t[2]:t[1])*m2; const kf=F_KELLER[answers['Keller']]||1.0; lo*=kf; hi*=kf; if (answers['Dachgeschoss']==='Ja' && answers['Dachform']!=='Flachdach'){ lo*=F_DACHGESCHOSS; hi*=F_DACHGESCHOSS; } return {lo:round5000(lo),hi:round5000(hi),m2}; }
-  const euro = n => '€ ' + Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
-  function openFunnel(){ i=0; renderBody(); modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); document.body.classList.add('locked'); }
-  function closeFunnel(){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); document.body.classList.remove('locked'); }
+  function media(o){ if (USE_IMAGES && o.img) return `<img src="${o.img}" alt="">`; const ik=ICON_FOR[o.v]; return ICONS[ik] ? `<svg viewBox="0 0 48 40" class="qicon">${ICONS[ik]}</svg>` : `<span class="emoji">${o.e||'•'}</span>`; }
   function optHTML(g,o){ const isSel = g.type==='multi' ? (answers[g.key]||[]).includes(o.v) : answers[g.key]===o.v; const desc=o.s||INFO[o.v]||'';
-    if (g.layout==='img'){ const ik=ICON_FOR[o.v]; const m=(USE_IMAGES&&o.img)?`<img src="${o.img}" alt="">`:(ICONS[ik]?`<svg viewBox="0 0 48 40" class="qicon">${ICONS[ik]}</svg>`:`<span class="emoji">${o.e||'•'}</span>`);
-      return `<button type="button" class="qcard${isSel?' sel':''}" data-k="${g.key}" data-t="${g.type}" data-v="${o.v}"><span class="check">✓</span><span class="media">${m}</span><span class="lab">${o.l}</span>${desc?`<span class="sub">${desc}</span>`:''}</button>`; }
+    if (g.layout==='img') return `<button type="button" class="qcard${isSel?' sel':''}" data-k="${g.key}" data-t="${g.type}" data-v="${o.v}"><span class="check">✓</span><span class="media">${media(o)}</span><span class="lab">${o.l}</span>${desc?`<span class="sub">${desc}</span>`:''}</button>`;
     return `<button type="button" class="qopt${isSel?' sel':''}" data-k="${g.key}" data-t="${g.type}" data-v="${o.v}"><span class="tick">${isSel?'✓':''}</span><span>${o.l}</span></button>`; }
   const groupHTML = g => `<div class="${g.layout==='img'?'qcard-grid':'qlist'}">${g.opts.map(o=>optHTML(g,o)).join('')}</div>`;
   function renderBody(){
@@ -364,17 +261,18 @@
       (q.subs||[]).forEach(s=>{ if (subVisible(s)) html+=`<div class="qsub"><div class="qsublabel">${s.title}</div>${groupHTML(s)}</div>`; });
       if (q.fileUpload) html+=`<div class="qfile"><label>Unterlagen hochladen (optional, kein Backend-Upload aktiv)</label><input id="files" type="file" multiple></div>`;
       qBody.innerHTML=html;
-    } else { const r=berechneRange(); const keys=['Bauvorhaben','Wohnfläche','Keller','Dachform','Leistungsumfang','Region'];
+    } else { const keys=['Bauvorhaben','Wohnfläche','Keller','Dachform','Leistungsumfang','Region'];
       const rows=keys.map(k=>{ let v=answers[k]; if (k==='Wohnfläche'&&answers._m2exact) v=answers._m2exact+' m²'; return `<div><span>${k}</span><span>${v||'–'}</span></div>`; }).join('');
       const extras=(answers['Extras']||[]).filter(x=>x!=='Keine Extras');
-      qBody.innerHTML=`<div class="result"><div class="reb">Ihre grobe Baukosten-Range</div><div class="range">${euro(r.lo)} – ${euro(r.hi)}</div><div class="rnote">für ca. ${r.m2} m² · inkl. USt. · grobe Orientierung auf Basis Ihrer Angaben</div></div>
+      qBody.innerHTML=`<h3 class="qtitle">Fast geschafft!</h3>
+        <p class="qhint">Wie dürfen wir Sie erreichen? Ihre grobe Preisrange senden wir Ihnen anschließend persönlich per WhatsApp.</p>
         <div class="field"><label for="qName">Name</label><input id="qName" type="text" placeholder="Vor- und Nachname" value="${kontakt.name}"></div>
         <div class="summary">${rows}${extras.length?`<div><span>Extras</span><span>${extras.join(', ')}</span></div>`:''}</div>
-        <div class="wa-note"><svg width="20" height="20" viewBox="0 0 24 24" fill="#25d366"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2Z"/></svg><span>Mit „Per WhatsApp senden" schicken Sie uns Ihre Angaben. Für die genaue Planung melden wir uns persönlich und telefonisch bei Ihnen.</span></div>`;
+        <div class="wa-note"><svg width="20" height="20" viewBox="0 0 24 24" fill="#25d366"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2Z"/></svg><span>Mit „Per WhatsApp senden" schicken Sie uns Ihre Angaben. Sie erhalten Ihre grobe Preisrange und alle Details persönlich per WhatsApp.</span></div>`;
     }
     const total=QUESTIONS.length+1;
     document.getElementById('progBar').style.width=((i+1)/total*100)+'%';
-    document.getElementById('stepLabel').textContent = i<QUESTIONS.length ? `Schritt ${i+1} von ${QUESTIONS.length}` : 'Ihre Kostenschätzung';
+    document.getElementById('stepLabel').textContent = i<QUESTIONS.length ? `Schritt ${i+1} von ${QUESTIONS.length}` : 'Fast geschafft';
     document.getElementById('backBtn').style.display = i===0?'none':'inline-flex';
     document.getElementById('nextBtn').textContent = i===QUESTIONS.length?'Per WhatsApp senden':'Weiter →';
   }
@@ -386,16 +284,16 @@
   function captureContact(){ const n=document.getElementById('qName'); if (n) kontakt.name=n.value.trim(); }
   function shakeBody(){ qBody.classList.remove('shake'); void qBody.offsetWidth; qBody.classList.add('shake'); }
   function stepValid(){ const q=QUESTIONS[i]; for (const g of groupsOf(q)){ const sel=answers[g.key]; let ok=g.type==='multi'?(sel&&sel.length):!!sel; if (g.exactM2&&answers._m2exact&&+answers._m2exact>0) ok=true; if (!ok) return false; } return true; }
-  function next(){ if (i<QUESTIONS.length){ if (!stepValid()){ shakeBody(); return; } i++; renderBody(); modal.querySelector('.modal-body').scrollTop=0; return; } captureContact(); if (!kontakt.name){ const n=document.getElementById('qName'); if (n) n.focus(); shakeBody(); return; } submit(); }
-  function prev(){ if (i>0){ if (i===QUESTIONS.length) captureContact(); i--; renderBody(); modal.querySelector('.modal-body').scrollTop=0; } }
-  function submit(){ const r=berechneRange(); const lines=['Hallo RESCHBAU, ich interessiere mich für einen Neubau.','',`*Grobe Baukosten-Range: ${euro(r.lo)} – ${euro(r.hi)}* (ca. ${r.m2} m²)`,'','Meine Angaben:'];
+  function next(){ if (i<QUESTIONS.length){ if (!stepValid()){ shakeBody(); return; } i++; renderBody(); window.scrollTo({top:0,behavior:'smooth'}); return; } captureContact(); if (!kontakt.name){ const n=document.getElementById('qName'); if (n) n.focus(); shakeBody(); return; } submit(); }
+  function prev(){ if (i>0){ if (i===QUESTIONS.length) captureContact(); i--; renderBody(); window.scrollTo({top:0,behavior:'smooth'}); } }
+  function submit(){ const lines=['Hallo RESCHBAU, ich interessiere mich für einen Neubau.','','Meine Angaben:'];
     QUESTIONS.forEach(q=>{ for (const g of groupsOf(q)){ let v=answers[g.key]; if (Array.isArray(v)) v=v.length?v.join(', '):'-'; if (v) lines.push(`• ${g.key}: ${v}`); } });
     if (answers._m2exact) lines.push(`• Exakte Wohnfläche: ${answers._m2exact} m²`);
     if (kontakt.files) lines.push(`• Unterlagen: ${kontakt.files} Datei(en) ausgewählt (bitte per WhatsApp nachsenden)`);
     if (kontakt.name) lines.push('', `• Name: ${kontakt.name}`);
-    lines.push('', 'Bitte meldet euch für ein persönliches Planungsgespräch. Danke!');
+    lines.push('', 'Bitte schickt mir meine grobe Preisrange und meldet euch für ein persönliches Gespräch. Danke!');
     window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(lines.join('\n'))}`, '_blank'); }
-  document.addEventListener('keydown', e => { if (e.key==='Escape') closeFunnel(); });
+  renderBody();
 </script>
 </body>
 </html>
